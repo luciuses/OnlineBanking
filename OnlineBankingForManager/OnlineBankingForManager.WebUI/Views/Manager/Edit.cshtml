@@ -1,0 +1,75 @@
+﻿@model OnlineBankingForManager.Domain.Entities.Client
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+<link rel="stylesheet/less" type="text/css" href="~/Content/EditStyle.less">
+<script src="~/Scripts/less-1.7.0.js" type="text/javascript"></script>
+<div class="container-table">
+    @using (Html.BeginForm("Edit", "Manager"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(m=>m.ClientId)
+    
+        <table class="table-input-fields">
+        
+            <tr>
+                <td></td>
+                <td>Edit @Model.FirstName:</td>
+            </tr>
+            <tr>
+                <td class="label-input-field">@Html.LabelFor(m => m.ContractNumber):</td>
+                <td>@Html.EditorFor(m => m.ContractNumber, new {@class = "input-field"})</td>
+                <td>@Html.ValidationMessageFor(m => m.ContractNumber)</td>
+            </tr>
+            <tr>
+    
+                <td class="label-input-field">@Html.LabelFor(m => m.FirstName):</td>
+                <td>@Html.EditorFor(m => m.FirstName, new {@class = "input-field"})</td>
+                <td>@Html.ValidationMessageFor(m => m.FirstName)</td>
+            </tr>
+            
+            <tr>
+                <td class="label-input-field">@Html.LabelFor(m => m.LastName):</td>
+                <td>@Html.EditorFor(m => m.LastName, new {@class = "input-field"})</td>
+                <td>@Html.ValidationMessageFor(m => m.LastName)</td>
+            </tr>
+
+            <tr>
+                <td class="label-input-field">@Html.LabelFor(m => m.DataBirth):</td>
+                <td>@Html.EditorFor(m => m.DataBirth, new {@class = "input-field"})</td>
+                <td>@Html.ValidationMessageFor(m => m.DataBirth)</td>
+            </tr>
+
+            <tr>
+                <td class="label-input-field">@Html.LabelFor(m => m.PhoneNumber):</td>
+                <td>@Html.EditorFor(m => m.PhoneNumber, new {@class = "input-field"})</td>
+                <td>@Html.ValidationMessageFor(m => m.PhoneNumber)</td>
+            </tr>
+
+            <tr>
+                <td class="label-input-field">@Html.LabelFor(m => m.Status):</td>
+                <td>@Html.EditorFor(m => m.Status, new {@class = "input-field"})</td>
+                <td>@Html.ValidationMessageFor(m => m.Status)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="checkbox">@Html.CheckBoxFor(m => m.Deposit)
+                    - @Html.LabelFor(m => m.Deposit)</td>
+                <td>@Html.ValidationMessageFor(m => m.Deposit)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit" /></td>
+            </tr>
+            <tr><td></td><td>
+                             @Html.ActionLink("Cancel and return to List", "List")
+                         </td></tr>
+        </table>
+ }
+  
+       
+</div>

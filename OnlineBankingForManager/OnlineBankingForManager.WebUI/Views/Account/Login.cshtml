@@ -1,0 +1,51 @@
+﻿@model OnlineBankingForManager.WebUI.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+<link rel="stylesheet/less" type="text/css" href="~/Content/LoginStyle.less">
+<script src="~/Scripts/less-1.7.0.js" type="text/javascript"></script>
+
+@using (Html.BeginForm(new{returnUrl = ViewBag.ReturnUrl }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+   
+    <div class="container-table">
+        <table class="table-input-fields">
+            <tr>
+                <td></td>
+                <td>Please enter you credentials:</td>
+            </tr>
+            <tr>
+    
+                <td class="label-input-field">@Html.LabelFor(m => m.UserName):</td>
+                <td>@Html.TextBoxFor(m => m.UserName,new { @class= "input-field",@id="login"})</td>
+                <td>@Html.ValidationMessageFor(m => m.UserName)</td>
+            </tr>
+
+            <tr>
+                <td class="label-input-field">@Html.LabelFor(m => m.Password):</td>
+                <td>@Html.PasswordFor(m => m.Password,new { @class= "input-field"})</td>
+                <td>@Html.ValidationMessageFor(m => m.Password)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="checkbox">@Html.CheckBoxFor(m => m.RememberMe)
+                    - @Html.LabelFor(m => m.RememberMe)</td>
+                <td>@Html.ValidationMessageFor(m => m.RememberMe)</td>
+            </tr>
+            
+
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>@Html.ActionLink("Register new account", "Register")</td>
+            </tr>
+        </table>
+    </div>
+}
+

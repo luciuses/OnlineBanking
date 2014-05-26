@@ -1,0 +1,57 @@
+﻿@model OnlineBankingForManager.WebUI.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+}
+<link rel="stylesheet/less" type="text/css" href="~/Content/RegisterStyle.less">
+<script src="~/Scripts/less-1.7.0.js" type="text/javascript"></script>
+<div class="link-login">@Html.ActionLink("Login", "Login")</div>
+@using(Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+   
+    <div class="container-table">
+        <table class="table-input-fields">
+            <tr>
+                <td></td>
+                <td>Please type next data:</td>
+            </tr>
+            <tr>
+    
+                <td class="label-input-field">@Html.LabelFor(m => m.UserName):</td>
+                <td>@Html.TextBoxFor(m => m.UserName,new { @class= "input-field"})</td>
+                <td>@Html.ValidationMessageFor(m => m.UserName)</td>
+            </tr>
+
+            <tr>
+                <td class="label-input-field">@Html.LabelFor(m => m.Password):</td>
+                <td>@Html.PasswordFor(m => m.Password,new { @class= "input-field"})</td>
+                <td>@Html.ValidationMessageFor(m => m.Password)</td>
+            </tr>
+
+            <tr>
+                <td class="label-input-field">@Html.LabelFor(m => m.ConfirmPassword):</td>
+                <td>@Html.PasswordFor(m => m.ConfirmPassword,new { @class= "input-field"})</td>
+                <td>@Html.ValidationMessageFor(m => m.ConfirmPassword)</td>
+            </tr>
+
+            <tr>
+                <td class="label-input-field">@Html.LabelFor(m => m.UserEmail):</td>
+                <td>@Html.TextBoxFor(m => m.UserEmail,new { @class= "input-field"})</td>
+                <td>@Html.ValidationMessageFor(m => m.UserEmail)</td>
+            </tr>
+
+            <tr>
+                <td class="label-input-field">@Html.LabelFor(m => m.UserAddress):</td>
+                <td>@Html.TextBoxFor(m => m.UserAddress,new { @class= "input-field"})</td>
+                <td>@Html.ValidationMessageFor(m => m.UserAddress)</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit" /></td>
+            </tr>
+        </table>
+    </div>
+}

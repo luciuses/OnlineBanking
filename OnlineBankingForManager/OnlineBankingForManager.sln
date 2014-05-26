@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineBankingForManager.Domain", "OnlineBankingForManager.Domain\OnlineBankingForManager.Domain.csproj", "{D922738F-4061-4D8C-8C75-0EA106A7DB5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineBankingForManager.WebUI", "OnlineBankingForManager.WebUI\OnlineBankingForManager.WebUI.csproj", "{66015E9D-C62B-4D40-A6AC-4F3526011FB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineBankingForManager.NUnitTests", "OnlineBankingForManager.NUnitTests\OnlineBankingForManager.NUnitTests.csproj", "{73348239-D424-4824-A796-EF640E99F012}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D922738F-4061-4D8C-8C75-0EA106A7DB5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D922738F-4061-4D8C-8C75-0EA106A7DB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D922738F-4061-4D8C-8C75-0EA106A7DB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D922738F-4061-4D8C-8C75-0EA106A7DB5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66015E9D-C62B-4D40-A6AC-4F3526011FB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66015E9D-C62B-4D40-A6AC-4F3526011FB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66015E9D-C62B-4D40-A6AC-4F3526011FB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66015E9D-C62B-4D40-A6AC-4F3526011FB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73348239-D424-4824-A796-EF640E99F012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73348239-D424-4824-A796-EF640E99F012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73348239-D424-4824-A796-EF640E99F012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73348239-D424-4824-A796-EF640E99F012}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

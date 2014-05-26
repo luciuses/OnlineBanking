@@ -1,0 +1,37 @@
+﻿@model IEnumerable<OnlineBankingForManager.Domain.Entities.Client>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+<link rel="stylesheet/less" type="text/css" href="~/Content/ListStyle.less">
+<script src="~/Scripts/less-1.7.0.js" type="text/javascript"></script>   
+<div class="scroll">
+    <table class="grid">
+        <tr>
+            <th>ContractNumber</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>DataBirth</th>
+            <th>PhoneNumber</th>
+            <th>Status</th>
+            <th>Deposit</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            Html.RenderPartial("ClientSummary", item);
+        }
+        <tr class="row-list" onclick="location.href = '@(Url.Action("Create","Manager"))'">
+        @for (int i = 0; i < 7; i++)
+        {
+            <td>...</td>
+        }
+            </tr>
+    </table>
+</div>
+
+<script>
+    $('.grid .row-list .td-delete').click(function () {
+        var c = confirm("Are you sure delete client ?");
+        return c;
+    });
+</script>
