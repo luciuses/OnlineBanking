@@ -332,14 +332,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Manager\List.cshtml" />
     <Content Include="Views\Shared\_ManagerLayout.cshtml" />
-    <Content Include="Views\Account\Login_.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\ClientSummary.cshtml" />
-    <Content Include="Views\Manager\Edit_.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Manager\Edit.cshtml" />
-    <Content Include="Views\Manager\Copy of Edit.cshtml" />
-    <Content Include="Views\Account\Copy of Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
