@@ -12,7 +12,6 @@
     @using (Html.BeginForm("Edit", "Manager"))
     {
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
 
         @Html.HiddenFor(m=>m.ClientId)
     

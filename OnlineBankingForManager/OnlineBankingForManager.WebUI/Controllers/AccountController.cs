@@ -40,8 +40,17 @@ namespace OnlineBankingForManager.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (authProvider.Authenticate(model.UserName, model.Password, model.RememberMe)) return Redirect(returnUrl ?? Url.Action("List", "Manager"));
-                ModelState.AddModelError(String.Empty, "Login or Password is incorrect.");
+                try
+                {
+                    if (authProvider.Authenticate(model.UserName, model.Password, model.RememberMe))
+                        return Redirect(returnUrl ?? Url.Action("List", "Manager"));
+                    ModelState.AddModelError(String.Empty, "Login or Password is incorrect.");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(String.Empty, "Authentication service error, try again later.");
+                    Logger.Log.Error(String.Format("Authentication service error:{0} \r\n Authenticate() with params: Name {1}, Pass {2},Remember {3}", ex.ToString(), model.UserName, model.Password, model.RememberMe), ex);
+                }
             }
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
@@ -53,8 +62,14 @@ namespace OnlineBankingForManager.WebUI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            try{
             authProvider.Logout();
-
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(String.Empty, "Authentication service error, try again later.");
+                Logger.Log.Error(String.Format("Authenticate service error:{0} \r\n Logout()", ex.ToString()), ex);
+            }
             return RedirectToAction("List", "Manager");
         }
 
@@ -75,14 +90,39 @@ namespace OnlineBankingForManager.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                MembershipCreateStatus createStatus = registerProvider.Register(model.UserName, model.Password, model.UserEmail, model.UserAddress);
+                MembershipCreateStatus createStatus;
+                try{
+                        createStatus = registerProvider.Register(model.UserName, model.Password, model.UserEmail, model.UserAddress);
+                    }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(String.Empty, "Registration service error, try again later.");
+                    Logger.Log.Error(String.Format("Registration service error:{0} \r\n Register() with params: Name {1}, Pass {2}, Email {3}, Address{4}", ex.ToString(), model.UserName, model.Password, model.UserEmail, model.UserAddress), ex);
+                    return View(model);
+                }
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    sendMailProvider.Send(model.UserEmail, createStatus.ErrorCodeToString());
-                    authProvider.Authenticate(model.UserName, model.Password,false);
+                    try{
+                        sendMailProvider.Send(model.UserEmail, createStatus.ErrorCodeToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError(String.Empty, "Mail sender service error, email not sended.");
+                        Logger.Log.Error(String.Format("Mail sender service error when registering:{0} \r\n Send() with params: Email {1}, Text {2}", ex.ToString(), model.UserEmail, createStatus.ErrorCodeToString()), ex);
+                    }
+                    try
+                    {
+                        authProvider.Authenticate(model.UserName, model.Password,false);
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError(String.Empty, "Authentication service error, try again later.");
+                        Logger.Log.Error(String.Format("Authentication service error when registering:{0} \r\n Authenticate() with params: Name {1}, Pass {2},Remember {3}", ex.ToString(), model.UserName, model.Password, "false"), ex);
+                    }
                     return RedirectToAction("List", "Manager");
                 }
                 ModelState.AddModelError("", createStatus.ErrorCodeToString());
+                
             }
 
             return View(model);

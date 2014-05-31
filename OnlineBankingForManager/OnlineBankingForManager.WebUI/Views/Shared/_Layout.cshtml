@@ -6,8 +6,8 @@
     <title>@ViewBag.Title</title>
 
     <script src="~/Scripts/jquery-2.1.1.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @*<script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
     <link rel="stylesheet/less" type="text/css" href="~/Content/MainStyle.less">
     <script src="~/Scripts/less-1.7.0.js" type="text/javascript"></script>
     <script src="~/Scripts/jquery.qtip-1.0.0-rc3.min.js"></script>
@@ -21,7 +21,7 @@
             <div id="logo-text">Welcome to online banking system</div>
         </div>
     </header>
-   
+   @Html.ValidationSummary(true)
         @RenderBody()
 
     <footer>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -22,14 +23,33 @@ namespace OnlineBankingForManager.WebUI.Controllers
 
         public ViewResult List()
         {
-            return View(repository.Clients);
+            try
+            {
+                return View(repository.Clients.ToList());
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(String.Empty, "Repository service error, try again later.");
+                Logger.Log.Error(String.Format("Repository service error when get Clients:{0} ", ex.ToString()),ex);
+            }
+            return View(new List<Client>{});
         }
 
-        public ViewResult Edit(int clientId)
+        public ActionResult Edit(int clientId)
         {
-            Client product = repository.Clients.FirstOrDefault(p => p.ClientId == clientId);
+            Client client;
+            try
+            {
+               client = repository.Clients.FirstOrDefault(p => p.ClientId == clientId);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(String.Empty, "Repository service error, try again later.");
+                Logger.Log.Error(String.Format("Repository service error when get Client ({0}) :{1} ", clientId, ex.ToString()), ex);
+                client = new Client();
+            }
             ViewData["StatusList"] = Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>();
-            return View(product);
+            return View(client);
         }
 
         [HttpPost]
@@ -43,7 +63,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
             }
             else
             {
-                // there is something wrong with the data values
+                ViewData["StatusList"] = Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>();
                 return View(client);
             }
         }
