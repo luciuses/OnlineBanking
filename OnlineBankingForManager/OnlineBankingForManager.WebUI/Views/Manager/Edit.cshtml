@@ -1,4 +1,6 @@
-﻿@model OnlineBankingForManager.Domain.Entities.Client
+﻿@using System.Collections
+@using OnlineBankingForManager.Domain.Entities
+@model OnlineBankingForManager.Domain.Entities.Client
 
 @{
     ViewBag.Title = "Edit";
@@ -52,7 +54,7 @@
 
             <tr>
                 <td class="label-input-field">@Html.LabelFor(m => m.Status):</td>
-                <td>@Html.EditorFor(m => m.Status, new {@class = "input-field"})</td>
+                <td>@Html.DropDownListFor(m=>m.Status,new SelectList(ViewData["StatusList"] as IEnumerable))</td>
                 <td>@Html.ValidationMessageFor(m => m.Status)</td>
             </tr>
             <tr>

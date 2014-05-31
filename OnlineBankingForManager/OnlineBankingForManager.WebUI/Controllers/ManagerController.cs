@@ -28,6 +28,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
         public ViewResult Edit(int clientId)
         {
             Client product = repository.Clients.FirstOrDefault(p => p.ClientId == clientId);
+            ViewData["StatusList"] = Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>();
             return View(product);
         }
 
@@ -49,6 +50,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
 
         public ViewResult Create()
         {
+            ViewData["StatusList"] = Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>();
             return View("Edit",new Client{DataBirth = DateTime.Today});
         }
 

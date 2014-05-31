@@ -31,7 +31,7 @@ namespace OnlineBankingForManager.NUnitTests
                     FirstName = "fname1",
                     LastName = "lname1",
                     PhoneNumber = "111",
-                    Status = "Client"
+                    Status = StatusClient.Classic
                 },
                 new Client
                 {
@@ -42,7 +42,7 @@ namespace OnlineBankingForManager.NUnitTests
                     FirstName = "fname2",
                     LastName = "lname2",
                     PhoneNumber = "222",
-                    Status = "Client"
+                    Status = StatusClient.Classic
                 },
                 new Client
                 {
@@ -53,7 +53,7 @@ namespace OnlineBankingForManager.NUnitTests
                     FirstName = "fname3",
                     LastName = "lname3",
                     PhoneNumber = "333",
-                    Status = "Client"
+                    Status = StatusClient.Classic
                 },
                 new Client
                 {
@@ -64,7 +64,7 @@ namespace OnlineBankingForManager.NUnitTests
                     FirstName = "fname4",
                     LastName = "lname4",
                     PhoneNumber = "444",
-                    Status = "Client"
+                    Status = StatusClient.Classic
                 },
                 new Client
                 {
@@ -75,7 +75,7 @@ namespace OnlineBankingForManager.NUnitTests
                     FirstName = "fname5",
                     LastName = "lname5",
                     PhoneNumber = "555",
-                    Status = "Client"
+                    Status = StatusClient.Classic
                 }
             }.AsQueryable());
             // create a controller
@@ -108,7 +108,7 @@ namespace OnlineBankingForManager.NUnitTests
                     FirstName = "fname1",
                     LastName = "lname1",
                     PhoneNumber = "111",
-                    Status = "Client"
+                    Status = StatusClient.Classic
                 },
                 new Client
                 {
@@ -119,7 +119,7 @@ namespace OnlineBankingForManager.NUnitTests
                     FirstName = "fname2",
                     LastName = "lname2",
                     PhoneNumber = "222",
-                    Status = "Client"
+                    Status = StatusClient.Classic
                 },
                 new Client
                 {
@@ -130,7 +130,7 @@ namespace OnlineBankingForManager.NUnitTests
                     FirstName = "fname3",
                     LastName = "lname3",
                     PhoneNumber = "333",
-                    Status = "Client"
+                    Status = StatusClient.Classic
                 }
             }.AsQueryable());
             // create a controller
@@ -160,7 +160,7 @@ namespace OnlineBankingForManager.NUnitTests
                     FirstName = "fname1",
                     LastName = "lname1",
                     PhoneNumber = "111",
-                    Status = "Client"
+                    Status = StatusClient.Classic
                 },
                 new Client
                 {
@@ -171,7 +171,7 @@ namespace OnlineBankingForManager.NUnitTests
                     FirstName = "fname2",
                     LastName = "lname2",
                     PhoneNumber = "222",
-                    Status = "Client"
+                    Status = StatusClient.Classic
                 },
                 new Client
                 {
@@ -182,7 +182,7 @@ namespace OnlineBankingForManager.NUnitTests
                     FirstName = "fname3",
                     LastName = "lname3",
                     PhoneNumber = "333",
-                    Status = "Client"
+                    Status = StatusClient.Classic
                 }
             }.AsQueryable());
             // create a controller

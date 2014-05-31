@@ -7,8 +7,9 @@ using System.Web.Mvc;
 
 namespace OnlineBankingForManager.Domain.Entities
 {
+   
     [Table("Clients")]
-    public class Client
+    public partial class Client
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
@@ -42,12 +43,12 @@ namespace OnlineBankingForManager.Domain.Entities
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
-        [Required(ErrorMessage = "Please enter a client name")]
+        [Required(ErrorMessage = "Please choose a client status")]
         [DisplayName("Status")]
-        [DataType(DataType.Text)]
-        public string Status { get; set; }
+        public StatusClient Status { get; set; }
         
        
         public bool Deposit { get; set; }
+
     }
 }

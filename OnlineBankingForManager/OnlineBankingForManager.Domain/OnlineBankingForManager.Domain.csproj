@@ -51,6 +51,7 @@
     <Compile Include="Concrete\EFClientRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\StatusClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

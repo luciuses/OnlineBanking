@@ -4,7 +4,7 @@ using OnlineBankingForManager.Domain.Entities;
 
 namespace OnlineBankingForManager.Domain.Concrete
 {
-    public class EFDbContext : DbContext
+    public partial class EFDbContext : DbContext
     {
         public EFDbContext() : base("EFDbContext") { }
         public DbSet<Client> Clients { get; set; }
