@@ -84,7 +84,7 @@ namespace OnlineBankingForManager.NUnitTests
             ActionResult result = controller.List();
             // Assert
             Assert.IsInstanceOf(typeof(ViewResult), result);
-            IQueryable<Client> clients = (IQueryable<Client>)((ViewResult)result).Model;
+            List<Client> clients = (List<Client>)((ViewResult)result).Model;
             Assert.IsTrue(clients.Count()==5);
             Assert.AreEqual(clients.ElementAt(0).FirstName,"fname1");
             Assert.AreEqual(clients.ElementAt(1).FirstName, "fname2");
@@ -136,7 +136,7 @@ namespace OnlineBankingForManager.NUnitTests
             // create a controller
             ManagerController controller = new ManagerController(mockA.Object);
             // Action
-            Client c1=controller.Edit(1).ViewData.Model as Client;
+            Client c1=(controller.Edit(1)).ViewData.Model as Client;
             Client c2 = controller.Edit(2).ViewData.Model as Client;
             Client c3 = controller.Edit(3).ViewData.Model as Client;
             // Assert
