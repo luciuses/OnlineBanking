@@ -33,7 +33,6 @@ namespace OnlineBankingForManager.WebUI.Controllers
             {
 
                 ModelState.AddModelError(String.Empty, "Repository service error, try again later.");
-                ModelState.AddModelError(String.Empty, "Repository service error, try again later.");
                 Logger.Log.Error(String.Format("Repository service error when get Clients:{0} ", ex.ToString()),ex);
             }
             return View(new List<Client>{});
@@ -105,10 +104,10 @@ namespace OnlineBankingForManager.WebUI.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError(String.Empty, "Repository service error, client not deleted, try again later.");
-                TempData["ModelState"] = ModelState; 
                 Logger.Log.Error(
                     String.Format("Repository service error when deleting Client ({0}) :{1} ", clientId, ex.ToString()), ex);
             }
+            TempData["ModelState"] = ModelState;
             return RedirectToAction("List");
         }
     }

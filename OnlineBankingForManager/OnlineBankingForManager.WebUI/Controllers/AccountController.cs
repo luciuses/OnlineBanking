@@ -70,6 +70,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
                 ModelState.AddModelError(String.Empty, "Authentication service error, try again later.");
                 Logger.Log.Error(String.Format("Authenticate service error:{0} \r\n Logout()", ex.ToString()), ex);
             }
+            TempData["ModelState"] = ModelState;
             return RedirectToAction("List", "Manager");
         }
 
@@ -119,6 +120,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
                         ModelState.AddModelError(String.Empty, "Authentication service error, try again later.");
                         Logger.Log.Error(String.Format("Authentication service error when registering:{0} \r\n Authenticate() with params: Name {1}, Pass {2},Remember {3}", ex.ToString(), model.UserName, model.Password, "false"), ex);
                     }
+                    TempData["ModelState"] = ModelState; 
                     return RedirectToAction("List", "Manager");
                 }
                 ModelState.AddModelError("", createStatus.ErrorCodeToString());

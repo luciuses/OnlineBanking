@@ -35,8 +35,7 @@ namespace OnlineBankingForManager.WebUI.Infrastructure.Concrete
                     smtpClient.PickupDirectoryLocation = emailSettings.FileLocation;
                     smtpClient.EnableSsl = false;
                 }
-                try
-                {
+                
                     MailMessage mailMessage = new MailMessage(
                         emailSettings.MailFromAddress, // From
                         mailToAddress, // To
@@ -48,11 +47,7 @@ namespace OnlineBankingForManager.WebUI.Infrastructure.Concrete
                         mailMessage.BodyEncoding = Encoding.ASCII;
                     }
                     smtpClient.Send(mailMessage);
-                }
-                catch (Exception ex)
-                {
-                    Logger.Log.Debug(ex.ToString());
-                }
+                
             }
             return true;
         }
