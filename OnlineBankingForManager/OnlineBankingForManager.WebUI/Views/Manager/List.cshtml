@@ -20,7 +20,7 @@
         {
             Html.RenderPartial("ClientSummary", item);
         }
-        <tr class="row-list" onclick="location.href = '@(Url.Action("Create","Manager"))'">
+        <tr class="row-list" onclick="location.href = '@(Url.Action("Create","Manager"))'" title="Press for create new client.">
         @for (int i = 0; i < 7; i++)
         {
             <td>...</td>

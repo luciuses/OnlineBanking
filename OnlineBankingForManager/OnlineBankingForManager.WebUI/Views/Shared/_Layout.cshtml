@@ -8,8 +8,8 @@
     <script src="~/Scripts/jquery-2.1.1.js"></script>
     <script src="~/Scripts/jquery.qtip.min.js"></script>
     <link href="~/Content/jquery.qtip.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+   @* <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
     <link rel="stylesheet/less" type="text/css" href="~/Content/MainStyle.less">
     <script src="~/Scripts/less-1.7.0.js" type="text/javascript"></script>
     
@@ -17,9 +17,9 @@
 <body>
 
     <header >
-        <div id="logo" onclick="location.href = '@(Url.Action("List","Manager"))'">
-            <img src="~/Content/Image/logo.png" alt="" id="logo-image" />
-            <div id="logo-text">Welcome to online banking system</div>
+        <div id="logo" onclick="location.href = '@(Url.Action("List","Manager"))'"  >
+            <img src="~/Content/Image/logo.png" alt="" id="logo-image" title="Press for go to home page."/>
+            <div id="logo-text" title="Press for go to home page.">Welcome to online banking system</div>
         </div>
     </header>
    @Html.ValidationSummary(true)
@@ -29,9 +29,16 @@
         <div id="footer-text">@("@") @(DateTime.Today.Year.ToString()) Online Banking. All rights reserved.</div>
     </footer>
     <script>
-       
-        $(document).ready(function () {
-            $('.field-validation-error').each(function () {
+
+        $(function() {
+            $('[title]').filter(':not(.input-validation-error)').qtip({
+                override: true,
+                position: {
+                    my: 'left center',
+                    at: 'right center'
+                }
+            });
+            $('.field-validation-error').each(function() {
                 // Get the name of the element the error message is intended for
                 // Note: ASP.NET MVC replaces the '[', ']', and '.' characters with an
                 // underscore but the data-valmsg-for value will have the original characters
@@ -43,6 +50,7 @@
                 // Show the validation error using qTip
                 $(inputElem).filter(':not(.valid)').qtip({
                     content: { text: $(this).text() }, // Set the content to be the error message
+                    override: true,
                     position: {
                         my: 'left center',
                         at: 'right center'
@@ -52,9 +60,22 @@
                     style: { classes: 'qtip-red' }
                 });
             });
-            
+            $('.validation-summary-errors ul li').each(function() {
+                var error = $(this).text();
+                $(this).text('');
+                $(this).qtip({
+                    content: { text: error }, // Set the content to be the error message
+                    override: true,
+                    position: {
+                        my: 'center center',
+                        at: 'center center'
+                    },
+                    show: { ready: true },
+                    hide: false,
+                    style: { classes: 'qtip-red' }
+                });
+            });
         });
-        
     </script>
 </body>
 </html>

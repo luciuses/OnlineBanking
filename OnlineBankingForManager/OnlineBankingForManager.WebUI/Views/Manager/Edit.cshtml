@@ -24,48 +24,48 @@
             
             <tr>
                 <td class="label-input-field">@Html.LabelFor(m => m.ContractNumber):</td>
-                <td>@Html.EditorFor(m => m.ContractNumber)</td>
+                <td>@Html.TextBoxFor(m => m.ContractNumber,new{@class= "input-field",@title="Client's contract number",@type="number"})</td>
                 <td>@Html.ValidationMessageFor(m => m.ContractNumber)</td>
             </tr>
             <tr>
     
                 <td class="label-input-field">@Html.LabelFor(m => m.FirstName):</td>
-                <td>@Html.EditorFor(m => m.FirstName, new {@class = "input-field"})</td>
+                <td>@Html.TextBoxFor(m => m.FirstName,new{@class= "input-field",@title="Client's firstname"})</td>
                 <td>@Html.ValidationMessageFor(m => m.FirstName)</td>
             </tr>
             
             <tr>
                 <td class="label-input-field">@Html.LabelFor(m => m.LastName):</td>
-                <td>@Html.EditorFor(m => m.LastName, new {@class = "input-field"})</td>
+                <td>@Html.TextBoxFor(m => m.LastName,new{@class= "input-field",@title="Client's lastname"})</td>
                 <td>@Html.ValidationMessageFor(m => m.LastName)</td>
             </tr>
 
             <tr>
-                <td class="label-input-field">@Html.LabelFor(m => m.DataBirth):</td>
-                <td>@Html.EditorFor(m => m.DataBirth, new {@class = "input-field"})</td>
-                <td>@Html.ValidationMessageFor(m => m.DataBirth)</td>
+                <td class="label-input-field">@Html.LabelFor(m => m.DateBirth):</td>
+                <td>@Html.TextBoxFor(m => m.DateBirth,"{0:yyyy-MM-dd}",new{@class= "input-field",@title="Client's date of birth",@type="date",})</td>
+                <td>@Html.ValidationMessageFor(m => m.DateBirth)</td>
             </tr>
 
             <tr>
                 <td class="label-input-field">@Html.LabelFor(m => m.PhoneNumber):</td>
-                <td>@Html.EditorFor(m => m.PhoneNumber, new {@class = "input-field"})</td>
+                <td>@Html.TextBoxFor(m => m.PhoneNumber,new{@class= "input-field",@title="Client's phone number"})</td>
                 <td>@Html.ValidationMessageFor(m => m.PhoneNumber)</td>
             </tr>
             
             <tr>
                 <td class="label-input-field">@Html.LabelFor(m => m.Status):</td>
-                <td>@Html.DropDownListFor(m=>m.Status,new SelectList(ViewData["StatusList"] as IEnumerable))</td>
+                <td>@Html.DropDownListFor(m=>m.Status,new SelectList(ViewData["StatusList"] as IEnumerable), new {@title= "Client's status."})</td>
                 <td>@Html.ValidationMessageFor(m => m.Status)</td>
             </tr>
             <tr>
                 <td></td>
-                <td class="checkbox">@Html.CheckBoxFor(m => m.Deposit)
+                <td class="checkbox">@Html.CheckBoxFor(m => m.Deposit, new {@title= "Client use deposit."})
                     - @Html.LabelFor(m => m.Deposit)</td>
                 <td>@Html.ValidationMessageFor(m => m.Deposit)</td>
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Submit" /></td>
+                <td><input type="submit" value="Submit" title="Press for submit"/></td>
             </tr>
             <tr><td></td><td>
                              @Html.ActionLink("Cancel and return to List", "List")

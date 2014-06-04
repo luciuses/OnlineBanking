@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlTypes;
 using System.Web.Mvc;
-
 namespace OnlineBankingForManager.Domain.Entities
 {
    
@@ -36,7 +35,7 @@ namespace OnlineBankingForManager.Domain.Entities
         [DisplayName("Date of Birth")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime DataBirth { get; set; }
+        public DateTime DateBirth { get; set; }
 
         [Required]
         [DisplayName("Phone Number")]

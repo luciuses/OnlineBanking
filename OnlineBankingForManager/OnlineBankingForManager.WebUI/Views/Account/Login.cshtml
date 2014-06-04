@@ -20,18 +20,18 @@
             <tr>
     
                 <td class="label-input-field">@Html.LabelFor(m => m.UserName):</td>
-                <td>@Html.TextBoxFor(m => m.UserName,new { @class= "input-field"})</td>
+                <td>@Html.TextBoxFor(m => m.UserName,new { @class= "input-field",@title= "Your username."})</td>
                 <td>@Html.ValidationMessageFor(m => m.UserName)</td>
             </tr>
 
             <tr>
                 <td class="label-input-field">@Html.LabelFor(m => m.Password):</td>
-                <td>@Html.PasswordFor(m => m.Password,new { @class= "input-field"})</td>
+                <td>@Html.PasswordFor(m => m.Password,new { @class= "input-field",@title= "Your password."})</td>
                 <td>@Html.ValidationMessageFor(m => m.Password)</td>
             </tr>
             <tr>
                 <td></td>
-                <td class="checkbox">@Html.CheckBoxFor(m => m.RememberMe)
+                <td class="checkbox">@Html.CheckBoxFor(m => m.RememberMe,new {@title= "For remember user."})
                     - @Html.LabelFor(m => m.RememberMe)</td>
                 <td>@Html.ValidationMessageFor(m => m.RememberMe)</td>
             </tr>
@@ -39,7 +39,7 @@
 
             <tr>
                 <td></td>
-                <td><input type="submit" value="Submit" /></td>
+                <td><input type="submit" value="Submit" title="Press for submit"/></td>
             </tr>
             <tr>
                 <td></td>

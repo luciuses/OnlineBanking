@@ -26,7 +26,7 @@ namespace OnlineBankingForManager.NUnitTests
                 {
                     ClientId = 1,
                     ContractNumber = 11,
-                    DataBirth = DateTime.Today,
+                    DateBirth = DateTime.Today,
                     Deposit = true,
                     FirstName = "fname1",
                     LastName = "lname1",
@@ -37,7 +37,7 @@ namespace OnlineBankingForManager.NUnitTests
                 {
                     ClientId = 2,
                     ContractNumber = 22,
-                    DataBirth = DateTime.Today,
+                    DateBirth = DateTime.Today,
                     Deposit = true,
                     FirstName = "fname2",
                     LastName = "lname2",
@@ -48,7 +48,7 @@ namespace OnlineBankingForManager.NUnitTests
                 {
                     ClientId = 3,
                     ContractNumber = 33,
-                    DataBirth = DateTime.Today,
+                    DateBirth = DateTime.Today,
                     Deposit = true,
                     FirstName = "fname3",
                     LastName = "lname3",
@@ -59,7 +59,7 @@ namespace OnlineBankingForManager.NUnitTests
                 {
                     ClientId = 4,
                     ContractNumber = 44,
-                    DataBirth = DateTime.Today,
+                    DateBirth = DateTime.Today,
                     Deposit = true,
                     FirstName = "fname4",
                     LastName = "lname4",
@@ -70,7 +70,7 @@ namespace OnlineBankingForManager.NUnitTests
                 {
                     ClientId = 5,
                     ContractNumber = 55,
-                    DataBirth = DateTime.Today,
+                    DateBirth = DateTime.Today,
                     Deposit = true,
                     FirstName = "fname5",
                     LastName = "lname5",
@@ -103,7 +103,7 @@ namespace OnlineBankingForManager.NUnitTests
                 {
                     ClientId = 1,
                     ContractNumber = 11,
-                    DataBirth = DateTime.Today,
+                    DateBirth = DateTime.Today,
                     Deposit = true,
                     FirstName = "fname1",
                     LastName = "lname1",
@@ -114,7 +114,7 @@ namespace OnlineBankingForManager.NUnitTests
                 {
                     ClientId = 2,
                     ContractNumber = 22,
-                    DataBirth = DateTime.Today,
+                    DateBirth = DateTime.Today,
                     Deposit = true,
                     FirstName = "fname2",
                     LastName = "lname2",
@@ -125,7 +125,7 @@ namespace OnlineBankingForManager.NUnitTests
                 {
                     ClientId = 3,
                     ContractNumber = 33,
-                    DataBirth = DateTime.Today,
+                    DateBirth = DateTime.Today,
                     Deposit = true,
                     FirstName = "fname3",
                     LastName = "lname3",
@@ -155,7 +155,7 @@ namespace OnlineBankingForManager.NUnitTests
                 {
                     ClientId = 1,
                     ContractNumber = 11,
-                    DataBirth = DateTime.Today,
+                    DateBirth = DateTime.Today,
                     Deposit = true,
                     FirstName = "fname1",
                     LastName = "lname1",
@@ -166,7 +166,7 @@ namespace OnlineBankingForManager.NUnitTests
                 {
                     ClientId = 2,
                     ContractNumber = 22,
-                    DataBirth = DateTime.Today,
+                    DateBirth = DateTime.Today,
                     Deposit = true,
                     FirstName = "fname2",
                     LastName = "lname2",
@@ -177,7 +177,7 @@ namespace OnlineBankingForManager.NUnitTests
                 {
                     ClientId = 3,
                     ContractNumber = 33,
-                    DataBirth = DateTime.Today,
+                    DateBirth = DateTime.Today,
                     Deposit = true,
                     FirstName = "fname3",
                     LastName = "lname3",

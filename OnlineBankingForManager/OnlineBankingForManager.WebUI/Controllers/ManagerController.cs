@@ -86,7 +86,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
         public ViewResult Create()
         {
             ViewData["StatusList"] = Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>();
-            return View("Edit",new Client{DataBirth = DateTime.Today});
+            return View("Edit",new Client{DateBirth = DateTime.Today});
         }
 
         

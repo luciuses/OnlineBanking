@@ -26,7 +26,7 @@ namespace OnlineBankingForManager.Domain.Concrete
                     dbEntry.ContractNumber = client.ContractNumber;
                     dbEntry.FirstName = client.FirstName;
                     dbEntry.LastName = client.LastName;
-                    dbEntry.DataBirth = client.DataBirth;
+                    dbEntry.DateBirth = client.DateBirth;
                     dbEntry.Deposit = client.Deposit;
                     dbEntry.PhoneNumber = client.PhoneNumber;
                     dbEntry.Status = client.Status;

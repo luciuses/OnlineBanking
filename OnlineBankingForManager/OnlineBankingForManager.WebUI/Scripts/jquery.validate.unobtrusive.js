@@ -63,7 +63,7 @@
         if (!error.is(':empty')) {
             // Apply the tooltip only if it isn't valid
             elem.filter(':not(.valid)').qtip({
-                overwrite: false,
+                overwrite: true,
                 content: error,
                 position: {
                     my: 'left center',
@@ -79,13 +79,18 @@
                 }
             })
 
-            // If we have a tooltip on this element already, just update its content
-            .qtip('option', 'content.text', error);
         }
-
-            // If the error is empty, remove the qTip
-        else { elem.qtip('destroy'); }
-    }
+            // If the error is empty, show title or remove the qTip
+        else if (elem.is('[title]'))
+            elem.qtip({
+                overwrite: true,
+                position: {
+                    my: 'left center',
+                    at: 'right center'
+                }
+            });
+        else elem.qtip('destroy');
+        }
 
     function onErrors(event, validator) {  // 'this' is the form element
         var container = $(this).find("[data-valmsg-summary=true]"),
