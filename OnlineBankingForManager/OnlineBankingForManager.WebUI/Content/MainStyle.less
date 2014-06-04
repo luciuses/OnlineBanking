@@ -29,16 +29,23 @@ body {
 
 .field-validation-valid {
     color:@valid-color;
+    display:none;
 }
 
-.input-field{
+.valid{
     border: 1px solid @valid-color;
     background-color: @input-valid-color;
+    background-image: url(Image/Check_ok.png);
+    background-repeat:no-repeat;
+    background-position:right;
 }
 
 .input-validation-error {
     border: 1px solid @error-color;
     background-color: @input-error-color;
+    background-image: url(Image/Delete_Icon_16.png);
+    background-repeat:no-repeat;
+    background-position:right;
 }
 .validation-summary-errors {
     font-weight: bold;
@@ -65,7 +72,7 @@ body {
     }
 }
 
-.input-field{
+.input-field,.text-box.single-line{
     width:200px;
 }
 .input-field:focus{
@@ -94,10 +101,8 @@ footer{
     width:100%;
     height:10%;
     background-color:@footer-color;
-    display:none;
 }
 header{
-    display:none;
     text-align:center;
     position:absolute;
     top:0;

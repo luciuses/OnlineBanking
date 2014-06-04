@@ -38,11 +38,13 @@
         return value;
     }
 
-    function onError(error, inputElement) {  // 'this' is the form element
-        var container = $(this).find("[data-valmsg-for='" + escapeAttributeValue(inputElement[0].name) + "']"),
-            replace = $.parseJSON(container.attr("data-valmsg-replace")) !== false;
+    function onError(error, inputElement) {  // 'this' is the form element        
+        var container = $(this).find("[data-valmsg-for='" + inputElement[0].name + "']"),
+        replace = $.parseJSON(container.attr("data-valmsg-replace")) !== false;
 
-        container.removeClass("field-validation-valid").addClass("field-validation-error");
+        // Remove the following line so the default validation messages are not displayed        
+        // container.removeClass("field-validation-valid").addClass("field-validation-error");
+
         error.data("unobtrusiveContainer", container);
 
         if (replace) {
@@ -52,6 +54,37 @@
         else {
             error.hide();
         }
+
+        /**** Added code to display the error message in a qTip tooltip ****/
+
+        var elem = $(inputElement);
+
+        // Check we have a valid error message
+        if (!error.is(':empty')) {
+            // Apply the tooltip only if it isn't valid
+            elem.filter(':not(.valid)').qtip({
+                overwrite: false,
+                content: error,
+                position: {
+                    my: 'left center',
+                    at: 'right center'
+                },
+                show: {
+                    event: false,
+                    ready: true
+                },
+                hide: false,
+                style: {
+                    classes: 'qtip-red' // Make it red... the classic error colour!
+                }
+            })
+
+            // If we have a tooltip on this element already, just update its content
+            .qtip('option', 'content.text', error);
+        }
+
+            // If the error is empty, remove the qTip
+        else { elem.qtip('destroy'); }
     }
 
     function onErrors(event, validator) {  // 'this' is the form element

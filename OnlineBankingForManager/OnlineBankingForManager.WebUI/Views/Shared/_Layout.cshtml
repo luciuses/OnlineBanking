@@ -6,12 +6,13 @@
     <title>@ViewBag.Title</title>
 
     <script src="~/Scripts/jquery-2.1.1.js"></script>
-    <!--script src="~/Scripts/jquery.validate.min.js"></!--script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script-->
-    <link rel="stylesheet/less" type="text/css" href="~/Content/MainStyle.less">
-    <script src="~/Scripts/less-1.7.0.js" type="text/javascript"></script>
     <script src="~/Scripts/jquery.qtip.min.js"></script>
     <link href="~/Content/jquery.qtip.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <link rel="stylesheet/less" type="text/css" href="~/Content/MainStyle.less">
+    <script src="~/Scripts/less-1.7.0.js" type="text/javascript"></script>
+    
 </head>
 <body>
 
@@ -28,8 +29,8 @@
         <div id="footer-text">@("@") @(DateTime.Today.Year.ToString()) Online Banking. All rights reserved.</div>
     </footer>
     <script>
-        $(function () {
-            // Run this function for all validation error messages
+       
+        $(document).ready(function () {
             $('.field-validation-error').each(function () {
                 // Get the name of the element the error message is intended for
                 // Note: ASP.NET MVC replaces the '[', ']', and '.' characters with an
@@ -48,10 +49,12 @@
                     },
                     show: { ready: true },
                     hide: false,
-                    style: { classes: 'ui-tooltip-red' }
+                    style: { classes: 'qtip-red' }
                 });
             });
+            
         });
+        
     </script>
 </body>
 </html>

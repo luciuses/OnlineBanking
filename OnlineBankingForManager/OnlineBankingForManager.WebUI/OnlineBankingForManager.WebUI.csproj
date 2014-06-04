@@ -338,6 +338,9 @@
     <Content Include="Views\Shared\ClientSummary.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Manager\Edit.cshtml" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js.map">
+      <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
