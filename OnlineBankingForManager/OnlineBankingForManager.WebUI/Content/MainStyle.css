@@ -14,7 +14,11 @@ body {
   color: #ff0000;
 }
 .field-validation-valid {
-  display: none;
+  color: #00ff00;
+}
+.input-field {
+  border: 1px solid #00ff00;
+  background-color: #eeffee;
 }
 .input-validation-error {
   border: 1px solid #ff0000;
@@ -45,6 +49,9 @@ body {
 .input-field {
   width: 200px;
 }
+.input-field:focus {
+  background-color: #f9fb35;
+}
 #logo-image {
   position: fixed;
   left: 35%;
@@ -68,8 +75,10 @@ footer {
   width: 100%;
   height: 10%;
   background-color: #74b9f3;
+  display: none;
 }
 header {
+  display: none;
   text-align: center;
   position: absolute;
   top: 0;
@@ -79,4 +88,7 @@ header {
 }
 #logo:hover {
   cursor: pointer;
+}
+.Hidden {
+  display: none;
 }

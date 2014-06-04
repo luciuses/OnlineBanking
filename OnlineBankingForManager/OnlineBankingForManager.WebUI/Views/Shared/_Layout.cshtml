@@ -6,12 +6,12 @@
     <title>@ViewBag.Title</title>
 
     <script src="~/Scripts/jquery-2.1.1.js"></script>
-    @*<script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+    <!--script src="~/Scripts/jquery.validate.min.js"></!--script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script-->
     <link rel="stylesheet/less" type="text/css" href="~/Content/MainStyle.less">
     <script src="~/Scripts/less-1.7.0.js" type="text/javascript"></script>
-    <script src="~/Scripts/jquery.qtip-1.0.0-rc3.min.js"></script>
-   
+    <script src="~/Scripts/jquery.qtip.min.js"></script>
+    <link href="~/Content/jquery.qtip.min.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -25,8 +25,33 @@
         @RenderBody()
 
     <footer>
-       <div id="footer-text">@("@") @(DateTime.Today.Year.ToString()) Online Banking. All rights reserved.</div>
+        <div id="footer-text">@("@") @(DateTime.Today.Year.ToString()) Online Banking. All rights reserved.</div>
     </footer>
-    
+    <script>
+        $(function () {
+            // Run this function for all validation error messages
+            $('.field-validation-error').each(function () {
+                // Get the name of the element the error message is intended for
+                // Note: ASP.NET MVC replaces the '[', ']', and '.' characters with an
+                // underscore but the data-valmsg-for value will have the original characters
+                var inputElem = '#' + $(this).attr('data-valmsg-for').replace('.', '_').replace('[', '_').replace(']', '_');
+
+                // Hide the default validation error
+                $(this).hide();
+
+                // Show the validation error using qTip
+                $(inputElem).filter(':not(.valid)').qtip({
+                    content: { text: $(this).text() }, // Set the content to be the error message
+                    position: {
+                        my: 'left center',
+                        at: 'right center'
+                    },
+                    show: { ready: true },
+                    hide: false,
+                    style: { classes: 'ui-tooltip-red' }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

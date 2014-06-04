@@ -214,6 +214,7 @@
     </Content>
     <Content Include="Content\Image\Delete_Icon_16.png" />
     <Content Include="Content\Image\logo.png" />
+    <Content Include="Content\jquery.qtip.min.css" />
     <Content Include="Content\ListStyle.css">
       <DependentUpon>ListStyle.less</DependentUpon>
     </Content>
@@ -306,6 +307,7 @@
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery.qtip-1.0.0-rc3.min.js" />
+    <Content Include="Scripts\jquery.qtip.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
