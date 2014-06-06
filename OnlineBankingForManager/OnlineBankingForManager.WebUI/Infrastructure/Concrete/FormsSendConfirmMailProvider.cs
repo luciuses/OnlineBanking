@@ -39,7 +39,7 @@ namespace OnlineBankingForManager.WebUI.Infrastructure.Concrete
                     MailMessage mailMessage = new MailMessage(
                         emailSettings.MailFromAddress, // From
                         mailToAddress, // To
-                        "Online banking registration!", // Subject
+                        "Online banking message!", // Subject
                         bodyText); // Body
 
                     if (emailSettings.WriteAsFile)

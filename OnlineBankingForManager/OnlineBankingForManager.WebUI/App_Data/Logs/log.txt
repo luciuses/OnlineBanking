@@ -397,3 +397,117 @@ System.Net.Mail.SmtpException: Failure sending mail. ---> System.IO.DirectoryNot
    at System.Net.Mail.SmtpClient.Send(MailMessage message)
    at OnlineBankingForManager.WebUI.Infrastructure.Concrete.FormsSendConfirmMailProvider.Send(String mailToAddress, String bodyText) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Infrastructure\Concrete\FormsSendConfirmMailProvider.cs:line 49
    at OnlineBankingForManager.WebUI.Controllers.AccountController.Register(RegisterViewModel model) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Controllers\AccountController.cs:line 107
+2014-06-05 11:20:59,892 [65] Logger ERROR Mail sender service error when registering:System.Net.Mail.SmtpException: Failure sending mail. ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'c:\sports_store_emails\3ce9c670-4ef5-40dd-9106-343d02b9316e.eml'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at System.Net.Mail.SmtpClient.GetFileMailWriter(String pickupDirectory)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   --- End of inner exception stack trace ---
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at OnlineBankingForManager.WebUI.Infrastructure.Concrete.FormsSendConfirmMailProvider.Send(String mailToAddress, String bodyText) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Infrastructure\Concrete\FormsSendConfirmMailProvider.cs:line 49
+   at OnlineBankingForManager.WebUI.Controllers.AccountController.Register(RegisterViewModel model) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Controllers\AccountController.cs:line 109 
+ Send() with params: Email test@test.test, Text Account created successfully
+System.Net.Mail.SmtpException: Failure sending mail. ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'c:\sports_store_emails\3ce9c670-4ef5-40dd-9106-343d02b9316e.eml'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at System.Net.Mail.SmtpClient.GetFileMailWriter(String pickupDirectory)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   --- End of inner exception stack trace ---
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at OnlineBankingForManager.WebUI.Infrastructure.Concrete.FormsSendConfirmMailProvider.Send(String mailToAddress, String bodyText) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Infrastructure\Concrete\FormsSendConfirmMailProvider.cs:line 49
+   at OnlineBankingForManager.WebUI.Controllers.AccountController.Register(RegisterViewModel model) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Controllers\AccountController.cs:line 109
+2014-06-06 09:57:12,400 [8] Logger ERROR Mail sender service error when registering:System.Net.Mail.SmtpException: Only absolute directories are allowed for pickup directory.
+   at System.Net.Mail.SmtpClient.GetFileMailWriter(String pickupDirectory)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at OnlineBankingForManager.WebUI.Infrastructure.Concrete.FormsSendConfirmMailProvider.Send(String mailToAddress, String bodyText) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Infrastructure\Concrete\FormsSendConfirmMailProvider.cs:line 49
+   at OnlineBankingForManager.WebUI.Controllers.AccountController.Register(RegisterViewModel model) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Controllers\AccountController.cs:line 109 
+ Send() with params: Email test@test.test, Text Account created successfully
+System.Net.Mail.SmtpException: Only absolute directories are allowed for pickup directory.
+   at System.Net.Mail.SmtpClient.GetFileMailWriter(String pickupDirectory)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at OnlineBankingForManager.WebUI.Infrastructure.Concrete.FormsSendConfirmMailProvider.Send(String mailToAddress, String bodyText) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Infrastructure\Concrete\FormsSendConfirmMailProvider.cs:line 49
+   at OnlineBankingForManager.WebUI.Controllers.AccountController.Register(RegisterViewModel model) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Controllers\AccountController.cs:line 109
+2014-06-06 09:58:45,703 [5] Logger ERROR Mail sender service error when registering:System.Net.Mail.SmtpException: Only absolute directories are allowed for pickup directory.
+   at System.Net.Mail.SmtpClient.GetFileMailWriter(String pickupDirectory)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at OnlineBankingForManager.WebUI.Infrastructure.Concrete.FormsSendConfirmMailProvider.Send(String mailToAddress, String bodyText) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Infrastructure\Concrete\FormsSendConfirmMailProvider.cs:line 49
+   at OnlineBankingForManager.WebUI.Controllers.AccountController.Register(RegisterViewModel model) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Controllers\AccountController.cs:line 109 
+ Send() with params: Email test@test.test, Text Account created successfully
+System.Net.Mail.SmtpException: Only absolute directories are allowed for pickup directory.
+   at System.Net.Mail.SmtpClient.GetFileMailWriter(String pickupDirectory)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at OnlineBankingForManager.WebUI.Infrastructure.Concrete.FormsSendConfirmMailProvider.Send(String mailToAddress, String bodyText) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Infrastructure\Concrete\FormsSendConfirmMailProvider.cs:line 49
+   at OnlineBankingForManager.WebUI.Controllers.AccountController.Register(RegisterViewModel model) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Controllers\AccountController.cs:line 109
+2014-06-06 11:11:16,888 [9] Logger ERROR Authentication service error:System.Data.SqlClient.SqlException (0x80131904): Cannot open database "OnlineBankingUsers" requested by the login. The login failed.
+Login failed for user 'Luciuses-PC\Luciuses'.
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebMatrix.Data.Database.EnsureConnectionOpen()
+   at WebMatrix.Data.Database.QueryValue(String commandText, Object[] args)
+   at WebMatrix.WebData.DatabaseWrapper.QueryValue(String commandText, Object[] parameters)
+   at WebMatrix.WebData.SimpleMembershipProvider.GetUserId(IDatabase db, String userTableName, String userNameColumn, String userIdColumn, String userName)
+   at WebMatrix.WebData.SimpleMembershipProvider.VerifyUserNameHasConfirmedAccount(IDatabase db, String username, Boolean throwException)
+   at WebMatrix.WebData.SimpleMembershipProvider.ValidateUser(String username, String password)
+   at System.Web.Security.Membership.ValidateUser(String username, String password)
+   at WebMatrix.WebData.WebSecurity.Login(String userName, String password, Boolean persistCookie)
+   at OnlineBankingForManager.WebUI.Infrastructure.Concrete.FormsAuthProvider.Authenticate(String username, String password, Boolean rememberMe) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Infrastructure\Concrete\FormsAuthProvider.cs:line 11
+   at OnlineBankingForManager.WebUI.Controllers.AccountController.Login(LoginViewModel model, String returnUrl) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Controllers\AccountController.cs:line 45
+ClientConnectionId:df2f3bef-117e-4741-b7f9-9517ad729d07 
+ Authenticate() with params: Name 1, Pass 1,Remember False
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "OnlineBankingUsers" requested by the login. The login failed.
+Login failed for user 'Luciuses-PC\Luciuses'.
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebMatrix.Data.Database.EnsureConnectionOpen()
+   at WebMatrix.Data.Database.QueryValue(String commandText, Object[] args)
+   at WebMatrix.WebData.DatabaseWrapper.QueryValue(String commandText, Object[] parameters)
+   at WebMatrix.WebData.SimpleMembershipProvider.GetUserId(IDatabase db, String userTableName, String userNameColumn, String userIdColumn, String userName)
+   at WebMatrix.WebData.SimpleMembershipProvider.VerifyUserNameHasConfirmedAccount(IDatabase db, String username, Boolean throwException)
+   at WebMatrix.WebData.SimpleMembershipProvider.ValidateUser(String username, String password)
+   at System.Web.Security.Membership.ValidateUser(String username, String password)
+   at WebMatrix.WebData.WebSecurity.Login(String userName, String password, Boolean persistCookie)
+   at OnlineBankingForManager.WebUI.Infrastructure.Concrete.FormsAuthProvider.Authenticate(String username, String password, Boolean rememberMe) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Infrastructure\Concrete\FormsAuthProvider.cs:line 11
+   at OnlineBankingForManager.WebUI.Controllers.AccountController.Login(LoginViewModel model, String returnUrl) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Controllers\AccountController.cs:line 45
+ClientConnectionId:df2f3bef-117e-4741-b7f9-9517ad729d07

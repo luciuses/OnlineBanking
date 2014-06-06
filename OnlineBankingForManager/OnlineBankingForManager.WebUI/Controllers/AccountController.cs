@@ -104,7 +104,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     try{
-                        sendMailProvider.Send(model.UserEmail, createStatus.ErrorCodeToString());
+                        bool res=sendMailProvider.Send(model.UserEmail, "Registration message - "+createStatus.ErrorCodeToString());
                     }
                     catch (Exception ex)
                     {
