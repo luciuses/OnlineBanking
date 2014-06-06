@@ -147,6 +147,9 @@ namespace OnlineBankingForManager.NUnitTests
             Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(0), "List");
             Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(1), "controller");
             Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(1), "Manager");
+            Assert.IsTrue(controller.ModelState.IsValid);
+            Assert.IsNotNull(controller.TempData["ModelState"] as ModelStateDictionary);
+            Assert.IsTrue((controller.TempData["ModelState"] as ModelStateDictionary).IsValid);
         }
         [Test]
         public void Cannot_Logout_With_Service_Error()
@@ -163,6 +166,7 @@ namespace OnlineBankingForManager.NUnitTests
             // Assert
             mockA.Verify(m => m.Logout());
             Assert.IsInstanceOf(typeof(RedirectToRouteResult), result);
+            Assert.IsFalse(controller.ModelState.IsValid);
             Assert.IsNotNull((controller.TempData["ModelState"]) as ModelStateDictionary);
             Assert.IsFalse(((controller.TempData["ModelState"]) as ModelStateDictionary).IsValid);
             Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(0), "action");
@@ -209,6 +213,7 @@ namespace OnlineBankingForManager.NUnitTests
             mockA.Verify(m => m.Register(registerViewModel.UserName,registerViewModel.Password,registerViewModel.UserEmail,registerViewModel.UserAddress));
             mockB.Verify(m => m.Send(registerViewModel.UserEmail,"Registration message - "+ MembershipCreateStatus.Success.ErrorCodeToString()));
             mockC.Verify(m=>m.Authenticate(registerViewModel.UserName,registerViewModel.Password,false));
+            Assert.IsTrue(controller.ModelState.IsValid);
             Assert.IsNotNull((controller.TempData["ModelState"]) as ModelStateDictionary);
             Assert.IsTrue(((controller.TempData["ModelState"]) as ModelStateDictionary).IsValid);
             Assert.IsInstanceOf(typeof(RedirectToRouteResult), result);
@@ -306,6 +311,7 @@ namespace OnlineBankingForManager.NUnitTests
             Assert.IsInstanceOf(typeof(ViewResult), result);
             Assert.IsFalse(((ViewResult)result).ViewData.ModelState.IsValid);
             Assert.AreEqual(((ViewResult)result).Model, registerViewModel);
+
         }
         [Test]
         public void Cannot_Confirm_Registered_Send_Email_With_Service_Email_Error()
@@ -335,6 +341,7 @@ namespace OnlineBankingForManager.NUnitTests
             mockA.Verify(m => m.Register(registerViewModel.UserName, registerViewModel.Password, registerViewModel.UserEmail, registerViewModel.UserAddress));
             mockB.Verify(m => m.Send(registerViewModel.UserEmail, "Registration message - " + MembershipCreateStatus.Success.ErrorCodeToString()));
             mockC.Verify(m => m.Authenticate(registerViewModel.UserName, registerViewModel.Password, false));
+            Assert.IsFalse(controller.ModelState.IsValid);
             Assert.IsNotNull((controller.TempData["ModelState"]) as ModelStateDictionary);
             Assert.IsFalse(((controller.TempData["ModelState"]) as ModelStateDictionary).IsValid);
             Assert.IsInstanceOf(typeof(RedirectToRouteResult), result);
@@ -371,6 +378,7 @@ namespace OnlineBankingForManager.NUnitTests
             mockA.Verify(m => m.Register(registerViewModel.UserName, registerViewModel.Password, registerViewModel.UserEmail, registerViewModel.UserAddress));
             mockB.Verify(m => m.Send(registerViewModel.UserEmail, "Registration message - " + MembershipCreateStatus.Success.ErrorCodeToString()));
             mockC.Verify(m => m.Authenticate(registerViewModel.UserName, registerViewModel.Password, false));
+            Assert.IsFalse(controller.ModelState.IsValid);
             Assert.IsNotNull((controller.TempData["ModelState"]) as ModelStateDictionary);
             Assert.IsFalse(((controller.TempData["ModelState"]) as ModelStateDictionary).IsValid);
             Assert.IsInstanceOf(typeof(RedirectToRouteResult), result);
