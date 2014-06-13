@@ -1,4 +1,5 @@
-﻿@using OnlineBankingForManager.WebUI.HtmlHelpers
+﻿@using OnlineBankingForManager.Domain.Entities
+@using OnlineBankingForManager.WebUI.HtmlHelpers
 @model OnlineBankingForManager.WebUI.Models.ClientListViewModel
 @{
     ViewBag.Title = "List";
@@ -9,13 +10,13 @@
 <div class="scroll">
     <table class="grid">
         <tr>
-            <th>Contract Number</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Data of Birth</th>
-            <th>Phone Number</th>
-            <th>Status</th>
-            <th>Deposit</th>
+            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,status=Model.CurrentStatusClient,order="ContractNumber"})'" title="Press for sort by Contract Number">Contract Number</th>
+            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,status=Model.CurrentStatusClient,order="FirstName"})'" title="Press for sort by First Name">First Name</th>
+            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,status=Model.CurrentStatusClient,order="LastName"})'" title="Press for sort by Last Name">Last Name</th>
+            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,status=Model.CurrentStatusClient,order="DateBirth"})'" title="Press for sort by Data of Birth">Date of Birth</th>
+            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,status=Model.CurrentStatusClient,order="PhoneNumber"})'" title="Press for sort by Phone Number">Phone Number</th>
+            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,status=Model.CurrentStatusClient,order="Status"})'" title="Press for sort by Status">Status</th>
+            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,status=Model.CurrentStatusClient,order="Deposit"})'" title="Press for sort by Deposit">Deposit</th>
         </tr>
         
         @foreach (var item in Model.Clients)
@@ -31,7 +32,7 @@
     </table>
     <div class="pager">
    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
-    new { page = x, status = Model.CurrentStatusClient }))
+    new { page = x, status = Model.CurrentStatusClient,order=Model.CurrentOrderClients }))
 </div>
 </div>
 

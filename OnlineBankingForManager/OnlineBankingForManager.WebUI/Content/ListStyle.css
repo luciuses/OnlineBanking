@@ -49,6 +49,10 @@ DIV.pager A.selected {
   background: #cfd8e6;
   cursor: pointer;
 }
+.grid th:hover {
+  background: #cfd8e6;
+  cursor: pointer;
+}
 .submit-delete {
   background-image: url(Image/Delete_Icon_16.png);
   background-repeat: no-repeat;

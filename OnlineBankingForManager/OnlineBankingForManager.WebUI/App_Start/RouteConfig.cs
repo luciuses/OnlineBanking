@@ -21,13 +21,14 @@ namespace OnlineBankingForManager.WebUI
                   controller = "Manager",
                   action = "List",
                   status = (StatusClient?)null,
+                  order =(string)null,
                   page = 1
               }
             );
 
             routes.MapRoute(null,
               "Page{page}",
-              new { controller = "Manager", action = "List", status = (StatusClient?)null},
+              new { controller = "Manager", action = "List", status = (StatusClient?)null, order = (string)null },
               new { page = @"\d+" }
             );
 

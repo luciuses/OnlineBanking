@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Core;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
@@ -27,16 +28,16 @@ namespace OnlineBankingForManager.WebUI.Controllers
             repository = repo;
         }
         [ImportModelStateFromTempData]
-        public ViewResult List(int page,StatusClient? status)
+        public ViewResult List(int page,StatusClient? status, string order)
         {
-            //ModelState.Merge(TempData["ModelState"] as ModelStateDictionary);
+           
             try
             {
                 ClientListViewModel viewModel = new ClientListViewModel
                 {
                     Clients = repository.Clients
-                      .Where(p => status == null || p.Status == status)
-                      .OrderBy(p => p.ClientId)
+                      .Where(c => status == null || c.Status == status)
+                      .OrderBy(order??"ClientId")
                       .Skip((page - 1) * PageSize)
                       .Take(PageSize).ToList(),
                     PagingInfo = new PagingInfo
@@ -47,7 +48,8 @@ namespace OnlineBankingForManager.WebUI.Controllers
                           repository.Clients.Count() :
                           repository.Clients.Where(e => e.Status == status).Count()
                     },
-                    CurrentStatusClient = status
+                    CurrentStatusClient = status,
+                    CurrentOrderClients = order
                 };
                 return View(viewModel);
             }
