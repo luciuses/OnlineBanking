@@ -39,6 +39,18 @@ DIV.pager A.selected {
   border-color: #ffffff;
   text-align: center;
 }
+.grid .order {
+  background-image: url(Image/arrow_up.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+}
+.grid .orderDesc {
+  background-image: url(Image/arrow_down.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+}
 .grid td {
   border: 1px solid;
   border-color: #98afef;

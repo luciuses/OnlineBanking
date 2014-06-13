@@ -10,20 +10,125 @@
 <div class="scroll">
     <table class="grid">
         <tr>
-            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,status=Model.CurrentStatusClient,order="ContractNumber"})'" title="Press for sort by Contract Number">Contract Number</th>
-            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,status=Model.CurrentStatusClient,order="FirstName"})'" title="Press for sort by First Name">First Name</th>
-            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,status=Model.CurrentStatusClient,order="LastName"})'" title="Press for sort by Last Name">Last Name</th>
-            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,status=Model.CurrentStatusClient,order="DateBirth"})'" title="Press for sort by Data of Birth">Date of Birth</th>
-            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,status=Model.CurrentStatusClient,order="PhoneNumber"})'" title="Press for sort by Phone Number">Phone Number</th>
-            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,status=Model.CurrentStatusClient,order="Status"})'" title="Press for sort by Status">Status</th>
-            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,status=Model.CurrentStatusClient,order="Deposit"})'" title="Press for sort by Deposit">Deposit</th>
+            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,
+                                              status=Model.CurrentStatusClient,
+                                              order=Model.CurrentOrderClients==null?"ContractNumber":
+                                              Model.CurrentOrderClients.StartsWith("ContractNumber")?
+                                                  Model.CurrentOrderClients.EndsWith("DESC")?
+                                                      Model.CurrentOrderClients.Replace(" DESC",""):
+                                                      Model.CurrentOrderClients+" DESC":
+                                                  "ContractNumber"})'" 
+                title="Press for sort by Contract Number"
+                class='@(Model.CurrentOrderClients==null?"no_order":Model.CurrentOrderClients.StartsWith("ContractNumber")?
+                             Model.CurrentOrderClients.EndsWith(" DESC")?
+                                 "orderDesc":
+                                 "order":
+                                 "no_order"
+                             )'>Contract Number</th>
+            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,
+                                              status=Model.CurrentStatusClient,
+                                              order=Model.CurrentOrderClients==null?"FirstName":
+                                              Model.CurrentOrderClients.StartsWith("FirstName")?
+                                                  Model.CurrentOrderClients.EndsWith("DESC")?
+                                                      Model.CurrentOrderClients.Replace(" DESC",""):
+                                                      Model.CurrentOrderClients+" DESC":
+                                                  "FirstName"})'" 
+                title="Press for sort by First Name"
+                class='@(Model.CurrentOrderClients==null?"no_order":Model.CurrentOrderClients.StartsWith("FirstName")?
+                             Model.CurrentOrderClients.EndsWith(" DESC")?
+                                 "orderDesc":
+                                 "order":
+                                 "no_order"
+                             )'>First Name</th>
+            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,
+                                              status=Model.CurrentStatusClient,
+                                              order=Model.CurrentOrderClients==null?"LastName":
+                                              Model.CurrentOrderClients.StartsWith("LastName")?
+                                                  Model.CurrentOrderClients.EndsWith("DESC")?
+                                                      Model.CurrentOrderClients.Replace(" DESC",""):
+                                                      Model.CurrentOrderClients+" DESC":
+                                                  "LastName"})'" 
+                title="Press for sort by Last Name"
+                class='@(Model.CurrentOrderClients==null?"no_order":Model.CurrentOrderClients.StartsWith("LastName")?
+                             Model.CurrentOrderClients.EndsWith(" DESC")?
+                                 "orderDesc":
+                                 "order":
+                                 "no_order"
+                             )'>Last Name</th>
+            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,
+                                              status=Model.CurrentStatusClient,
+                                              order=Model.CurrentOrderClients==null?"DateBirth":
+                                              Model.CurrentOrderClients.StartsWith("DateBirth")?
+                                                  Model.CurrentOrderClients.EndsWith("DESC")?
+                                                      Model.CurrentOrderClients.Replace(" DESC",""):
+                                                      Model.CurrentOrderClients+" DESC":
+                                                  "DateBirth"})'" 
+                title="Press for sort by Date of Birth"
+                class='@(Model.CurrentOrderClients==null?"no_order":
+                             Model.CurrentOrderClients.StartsWith("DateBirth")?
+                             Model.CurrentOrderClients.EndsWith(" DESC")?
+                                 "orderDesc":
+                                 "order":
+                                 "no-order"
+                             )'>Date of Birth</th>
+            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,
+                                              status=Model.CurrentStatusClient,
+                                              order=Model.CurrentOrderClients==null?"PhoneNumber":
+                                              Model.CurrentOrderClients.StartsWith("PhoneNumber")?
+                                                  Model.CurrentOrderClients.EndsWith("DESC")?
+                                                      Model.CurrentOrderClients.Replace(" DESC",""):
+                                                      Model.CurrentOrderClients+" DESC":
+                                                  "PhoneNumber"})'" 
+                title="Press for sort by Phone Number"
+                class='@(Model.CurrentOrderClients==null?"no_order":
+                            Model.CurrentOrderClients.StartsWith("PhoneNumber")?
+                             Model.CurrentOrderClients.EndsWith(" DESC")?
+                                 "orderDesc":
+                                 "order":
+                                 "no_order"
+                             )'>Phone Number</th>
+            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,
+                                              status=Model.CurrentStatusClient,
+                                              order=Model.CurrentOrderClients==null?"Status":
+                                              Model.CurrentOrderClients.StartsWith("Status")?
+                                                  Model.CurrentOrderClients.EndsWith("DESC")?
+                                                      Model.CurrentOrderClients.Replace(" DESC",""):
+                                                      Model.CurrentOrderClients+" DESC":
+                                                  "Status"})'" 
+                title="Press for sort by Status"
+                class='@(Model.CurrentOrderClients==null?"no_order":Model.CurrentOrderClients.StartsWith("Status")?
+                             Model.CurrentOrderClients.EndsWith(" DESC")?
+                                 "orderDesc":
+                                 "order":
+                                 "no_order"
+                             )'>Status</th>
+            <th onclick="location.href = '@Url.Action("List", new {page=Model.PagingInfo.CurrentPage,
+                                              status=Model.CurrentStatusClient,
+                                              order=Model.CurrentOrderClients==null?"Deposit":
+                                              Model.CurrentOrderClients.StartsWith("Deposit")?
+                                                  Model.CurrentOrderClients.EndsWith("DESC")?
+                                                      Model.CurrentOrderClients.Replace(" DESC",""):
+                                                      Model.CurrentOrderClients+" DESC":
+                                                  "Deposit"})'" 
+                title="Press for sort by Deposit"
+                class='@(Model.CurrentOrderClients==null?"no_order":Model.CurrentOrderClients.StartsWith("Deposit")?
+                             Model.CurrentOrderClients.EndsWith(" DESC")?
+                                 "orderDesc":
+                                 "order":
+                                 "no_order"
+                             )'>Deposit</th>
         </tr>
-        
+
+       @* @for (int i = 0; i < 7; i++)
+        {
+            Html.RenderPartial("ClientHeader", i);
+        }*@
+
         @foreach (var item in Model.Clients)
         {
             Html.RenderPartial("ClientSummary", item);
         }
-        <tr class="row-list" onclick="location.href = '@(Url.Action("Create", "Manager",new {returnUrl=Request.Url.PathAndQuery}))'" title="Press for create new client.">
+        <tr class="row-list" onclick="location.href = '@(Url.Action("Create", "Manager", new { returnUrl = Request.Url.PathAndQuery }))'" title="Press for create new client.">
             @for (int i = 0; i < 7; i++)
             {
                 <td>...</td>
