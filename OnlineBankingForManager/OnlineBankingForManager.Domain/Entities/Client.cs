@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlTypes;
 using System.Web.Mvc;
+using DataAnnotationsExtensions;
+
 namespace OnlineBankingForManager.Domain.Entities
 {
    
@@ -42,11 +44,11 @@ namespace OnlineBankingForManager.Domain.Entities
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
-        [Required(ErrorMessage = "Please choose a client status")]
+        [Required(ErrorMessage = "Please enter a client status")]
         [DisplayName("Status")]
-        public StatusClient Status { get; set; }
-        
-       
+        public StatusClient? Status { get; set; }
+
+        [DisplayName("Deposit")]
         public bool Deposit { get; set; }
 
     }

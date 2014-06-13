@@ -98,3 +98,11 @@ header {
 .Hidden {
   display: none;
 }
+.message {
+  font-weight: bold;
+  text-align: center;
+  background-color: #ffff00;
+  position: absolute;
+  top: 15%;
+  width: 100%;
+}

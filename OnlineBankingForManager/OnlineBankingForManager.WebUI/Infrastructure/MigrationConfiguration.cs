@@ -17,6 +17,11 @@ namespace OnlineBankingForManager.WebUI.Infrastructure
         protected override void Seed(UsersContext context)
         {
             WebSecurity.InitializeDatabaseConnection("UsersContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            var role = System.Web.Security.Roles.Provider;
+            if (!role.RoleExists("ActiveUser"))
+            {
+                role.CreateRole("ActiveUser");
+            }
         }
     }
 }

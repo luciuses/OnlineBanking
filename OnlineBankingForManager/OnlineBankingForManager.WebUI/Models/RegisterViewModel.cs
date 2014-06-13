@@ -23,7 +23,6 @@ namespace OnlineBankingForManager.WebUI.Models
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
         public string UserEmail { get; set; }
 
-        [Required]
         [Display(Name = "Address")]
         public string UserAddress { get; set; }
         

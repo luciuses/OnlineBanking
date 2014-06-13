@@ -2,15 +2,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-        @if (TempData["message"] != null)
-        {
-            <div class="Message">@TempData["message"]</div>
-        }
 <div class="link-logout">
-    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
-        @Html.AntiForgeryToken()
-        <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
-    }
+    @Html.ActionLink("Logout", "LogOff","Account")
 </div>
 @RenderBody()
   

@@ -6,16 +6,17 @@ using System.Net.Mail;
 using System.Text;
 using System.Web;
 using System.Web.Services.Description;
+//using Ninject.Activation;
 using OnlineBankingForManager.WebUI.Infrastructure.Abstract;
 
 namespace OnlineBankingForManager.WebUI.Infrastructure.Concrete
 {
     
-    public class FormsSendConfirmMailProvider : ISendConfirmMailProvider
+    public class FormsSendMailProvider : ISendMailProvider
     {
         private IEmailSettingsProvider emailSettings;
 
-        public FormsSendConfirmMailProvider(IEmailSettingsProvider settings)
+        public FormsSendMailProvider(IEmailSettingsProvider settings)
         {
             emailSettings = settings;
         }

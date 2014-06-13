@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace OnlineBankingForManager.WebUI.Infrastructure.Abstract
 {
-    public interface ISendConfirmMailProvider
+    public interface ISendMailProvider
     {
         bool Send(string mailToAddress, string bodyText);
     }
+    
 }

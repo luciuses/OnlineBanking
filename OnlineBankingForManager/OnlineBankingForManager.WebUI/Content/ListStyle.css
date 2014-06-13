@@ -1,3 +1,24 @@
+DIV.pager {
+  width: 90%;
+  text-align: right;
+  border-top: 2px solid #cfd8e6;
+  padding: .5em 0 0 0;
+  margin-top: 1em;
+  margin-left: 5%;
+}
+DIV.pager A {
+  font-size: 1.1em;
+  color: #98afef;
+  text-decoration: none;
+  padding: 0 .4em 0 .4em;
+}
+DIV.pager A:hover {
+  background-color: #cfd8e6;
+}
+DIV.pager A.selected {
+  background-color: #5c7deb;
+  color: #ffffff;
+}
 .scroll {
   position: absolute;
   top: 20%;

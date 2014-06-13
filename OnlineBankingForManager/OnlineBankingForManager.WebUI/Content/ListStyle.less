@@ -4,6 +4,35 @@
 @grid-border-color:#5c7deb;
 @row-hover-color:#cfd8e6;
 
+DIV.pager
+{
+    width: 90%;
+  text-align: right;
+  border-top: 2px solid @row-hover-color;
+  padding: .5em 0 0 0;
+  margin-top: 1em;
+    margin-left: 5%;
+}
+
+  DIV.pager A
+  {
+    font-size: 1.1em;
+    color: @th-back-color;
+    text-decoration: none;
+    padding: 0 .4em 0 .4em;
+  }
+
+   DIV.pager A:hover
+    {
+      background-color: @row-hover-color;
+    }
+
+    DIV.pager A.selected
+    {
+      background-color:@grid-border-color;
+      color: @th-border-color;
+    }
+
 .scroll{
     position:absolute;
     top:20%;

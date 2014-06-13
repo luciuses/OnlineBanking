@@ -1,6 +1,6 @@
 ﻿@model OnlineBankingForManager.Domain.Entities.Client
 
-<tr class="row-list" onclick="location.href = '@(Url.Action("Edit","Manager", new { Model.ClientId}))'" title="Press for edit client.">
+<tr class="row-list" onclick="location.href = '@(Url.Action("Edit","Manager", new {clientId=Model.ClientId,returnUrl=Request.Url.PathAndQuery}))'" title="Press for edit client.">
     <td>@Model.ContractNumber</td>
     <td>@Model.FirstName</td>
     <td>@Model.LastName</td>
@@ -9,7 +9,7 @@
     <td>@Model.Status</td>
     <td>@Html.DisplayFor(m=>m.Deposit,new{@class="checkbox-list"})</td>
     <td class="td-delete">
-         @using (Html.BeginForm("Delete", "Manager",FormMethod.Post, new { @class = "form-delete-edit" }))
+         @using (Html.BeginForm("Delete", "Manager", new { returnUrl = Request.Url.PathAndQuery }, FormMethod.Post, new { @class = "form-delete-edit" }))
         {
             @Html.Hidden("ClientId", Model.ClientId)
             <input type="submit" value="" class="submit-delete" title="Press for delete client."/>

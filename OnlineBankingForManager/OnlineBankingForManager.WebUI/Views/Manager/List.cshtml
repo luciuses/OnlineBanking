@@ -1,32 +1,38 @@
-﻿@model IEnumerable<OnlineBankingForManager.Domain.Entities.Client>
+﻿@using OnlineBankingForManager.WebUI.HtmlHelpers
+@model OnlineBankingForManager.WebUI.Models.ClientListViewModel
 @{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_ManagerLayout.cshtml";
 }
 <link rel="stylesheet/less" type="text/css" href="~/Content/ListStyle.less">
-<script src="~/Scripts/less-1.7.0.js" type="text/javascript"></script>   
+
 <div class="scroll">
     <table class="grid">
         <tr>
-            <th>ContractNumber</th>
-            <th>FirstName</th>
-            <th>LastName</th>
-            <th>DataBirth</th>
-            <th>PhoneNumber</th>
+            <th>Contract Number</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Data of Birth</th>
+            <th>Phone Number</th>
             <th>Status</th>
             <th>Deposit</th>
         </tr>
-        @foreach (var item in Model)
+        
+        @foreach (var item in Model.Clients)
         {
             Html.RenderPartial("ClientSummary", item);
         }
-        <tr class="row-list" onclick="location.href = '@(Url.Action("Create","Manager"))'" title="Press for create new client.">
-        @for (int i = 0; i < 7; i++)
-        {
-            <td>...</td>
-        }
-            </tr>
+        <tr class="row-list" onclick="location.href = '@(Url.Action("Create", "Manager",new {returnUrl=Request.Url.PathAndQuery}))'" title="Press for create new client.">
+            @for (int i = 0; i < 7; i++)
+            {
+                <td>...</td>
+            }
+        </tr>
     </table>
+    <div class="pager">
+   @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
+    new { page = x, status = Model.CurrentStatusClient }))
+</div>
 </div>
 
 <script>

@@ -189,19 +189,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\ModelStateTempDataTransfer.cs" />
+    <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\Abstract\IAuthProvider.cs" />
     <Compile Include="Infrastructure\Abstract\IEmailSettingsProvider.cs" />
     <Compile Include="Infrastructure\Abstract\IRegisterProvider.cs" />
-    <Compile Include="Infrastructure\Abstract\ISendConfirmMailProvider.cs" />
+    <Compile Include="Infrastructure\Abstract\ISendMailProvider.cs" />
     <Compile Include="Infrastructure\Concrete\FormsAuthProvider.cs" />
     <Compile Include="Infrastructure\Concrete\FormsEmailSettingsProvider.cs" />
     <Compile Include="Infrastructure\Concrete\FormsRegisterProvider.cs" />
-    <Compile Include="Infrastructure\Concrete\FormsSendConfirmMailProvider.cs" />
+    <Compile Include="Infrastructure\Concrete\FormsSendMailProvider.cs" />
     <Compile Include="Infrastructure\MemberShipExtension.cs" />
     <Compile Include="Infrastructure\MigrationConfiguration.cs" />
     <Compile Include="Infrastructure\UserProfile.cs" />
     <Compile Include="Infrastructure\UsersContext.cs" />
+    <Compile Include="Models\ClientListViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -293,6 +297,13 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <None Include="Content\UnLockStyle.less" />
+    <Content Include="Content\UnLockStyle.css">
+      <DependentUpon>UnLockStyle.less</DependentUpon>
+    </Content>
+    <Content Include="Content\UnLockStyle.min.css">
+      <DependentUpon>UnLockStyle.less</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Content\EditStyle.less" />
     <Content Include="Content\ListStyle.less" />
@@ -341,6 +352,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js.map">
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
+    <Content Include="Views\Account\Unlock.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -2,6 +2,7 @@
 @header-color:#1f48ce;
 @footer-color:#74b9f3;
 @error-color:#f00;
+@message-color:#ff0;
 @input-error-color:#fee;
 @valid-color:#0f0;
 @input-valid-color:#efe;
@@ -59,7 +60,6 @@ body {
 .validation-summary-valid {
     display: none;
 }
-//---
 
 
 .link-login,.link-logout{
@@ -115,4 +115,12 @@ header{
 }
 .Hidden{
     display:none;
+}
+.message {
+    font-weight: bold;
+    text-align:center;
+    background-color:@message-color;
+    position:absolute;
+    top:15%;
+    width:100%;
 }
