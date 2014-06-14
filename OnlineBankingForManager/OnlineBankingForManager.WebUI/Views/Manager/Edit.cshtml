@@ -53,7 +53,7 @@
             
             <tr>
                 <td class="label-input-field">@Html.LabelFor(m => m.Status):</td>
-                <td>@Html.DropDownListFor(m=>m.Status,new SelectList(ViewData["StatusList"] as IEnumerable), new {@title= "Client's status."})</td>
+                <td>@Html.DropDownListFor(m=>m.Status,new SelectList(Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>() as IEnumerable), new {@title= "Client's status."})</td>
                 <td>@Html.ValidationMessageFor(m => m.Status)</td>
             </tr>
             <tr>
