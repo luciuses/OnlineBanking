@@ -18,8 +18,6 @@ namespace OnlineBankingForManager.WebUI.Controllers
     [Authorize(Roles = "ActiveUser")]
     public class ManagerController : Controller
     {
-        //
-        // GET: /Manager/
         public int PageSize = 10;
         private IClientRepository repository;
 
@@ -37,7 +35,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
                 {
                     Clients = repository.Clients
                       .Where(c => status == null || c.Status == status)
-                      .OrderBy(order??"ClientId")
+                      .OrderBy(String.IsNullOrEmpty(order)?"ClientId":order)
                       .Skip((page - 1) * PageSize)
                       .Take(PageSize).ToList(),
                     PagingInfo = new PagingInfo
@@ -66,44 +64,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
             }
             return View(new ClientListViewModel{Clients=new List<Client>(),CurrentStatusClient = null, PagingInfo = new PagingInfo{CurrentPage = 1,ItemsPerPage = PageSize,TotalItems = 0}});
         }
-        [HttpPost]
-        public ViewResult List(ClientListViewModel model)
-        {
-            try
-            {
-                ClientListViewModel viewModel = new ClientListViewModel
-                {
-                    Clients = repository.Clients
-                      .Where(c => model.CurrentStatusClient == null || c.Status == model.CurrentStatusClient)
-                      .OrderBy(model.CurrentOrderClients ?? "ClientId")
-                      .Skip((model.PagingInfo.CurrentPage - 1) * PageSize)
-                      .Take(PageSize).ToList(),
-                    PagingInfo = new PagingInfo
-                    {
-                        CurrentPage = model.PagingInfo.CurrentPage,
-                        ItemsPerPage = PageSize,
-                        TotalItems = model.CurrentStatusClient == null ?
-                          repository.Clients.Count() :
-                          repository.Clients.Where(e => e.Status == model.CurrentStatusClient).Count()
-                    },
-                    CurrentStatusClient = model.CurrentStatusClient,
-                    CurrentOrderClients = model.CurrentOrderClients
-                };
-                ViewData["StatusList"] = Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>();
-                return View(viewModel);
-            }
-            catch (EntityException ex)
-            {
-                ModelState.AddModelError(String.Empty, string.Format("Repository service error:{0}, try again later.", ex.Message));
-                Logger.Log.Error(String.Format("Repository service error when get Clients:{0} ", ex.ToString()), ex);
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError(String.Empty, string.Format("{0} error:{1}, try again later.", ex.GetType().ToString(), ex.Message));
-                Logger.Log.Error(String.Format("{0} when get Clients:{1} ", ex.GetType().ToString(), ex.ToString()), ex);
-            }
-            return View(new ClientListViewModel { Clients = new List<Client>(), CurrentStatusClient = null, PagingInfo = new PagingInfo { CurrentPage = 1, ItemsPerPage = PageSize, TotalItems = 0 } });
-        }
+        
         public ViewResult Edit(int clientId, string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
