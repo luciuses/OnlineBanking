@@ -214,39 +214,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\EditStyle.css">
-      <DependentUpon>EditStyle.less</DependentUpon>
-    </Content>
-    <Content Include="Content\EditStyle.min.css">
-      <DependentUpon>EditStyle.less</DependentUpon>
-    </Content>
     <Content Include="Content\Image\Delete_Icon_16.png" />
     <Content Include="Content\Image\logo.png" />
     <Content Include="Content\jquery.qtip.min.css" />
-    <Content Include="Content\ListStyle.css">
-      <DependentUpon>ListStyle.less</DependentUpon>
-    </Content>
-    <Content Include="Content\ListStyle.min.css">
-      <DependentUpon>ListStyle.less</DependentUpon>
-    </Content>
-    <Content Include="Content\LoginStyle.css">
-      <DependentUpon>LoginStyle.less</DependentUpon>
-    </Content>
-    <Content Include="Content\LoginStyle.min.css">
-      <DependentUpon>LoginStyle.less</DependentUpon>
-    </Content>
-    <Content Include="Content\MainStyle.css">
-      <DependentUpon>MainStyle.less</DependentUpon>
-    </Content>
-    <Content Include="Content\MainStyle.min.css">
-      <DependentUpon>MainStyle.less</DependentUpon>
-    </Content>
-    <Content Include="Content\RegisterStyle.css">
-      <DependentUpon>RegisterStyle.less</DependentUpon>
-    </Content>
-    <Content Include="Content\RegisterStyle.min.css">
-      <DependentUpon>RegisterStyle.less</DependentUpon>
-    </Content>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -301,16 +271,10 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\ListStyle.less" />
     <None Include="Content\UnLockStyle.less" />
-    <Content Include="Content\UnLockStyle.css">
-      <DependentUpon>UnLockStyle.less</DependentUpon>
-    </Content>
-    <Content Include="Content\UnLockStyle.min.css">
-      <DependentUpon>UnLockStyle.less</DependentUpon>
-    </Content>
     <Content Include="Global.asax" />
     <Content Include="Content\EditStyle.less" />
-    <Content Include="Content\ListStyle.less" />
     <Content Include="Content\LoginStyle.less" />
     <Content Include="Content\MainStyle.less" />
     <Content Include="Content\RegisterStyle.less" />

@@ -9,7 +9,8 @@ namespace OnlineBankingForManager.WebUI.Models
     {
         public int TotalItems { get; set; }
         public int ItemsPerPage { get; set; }
-        public int CurrentPage { get; set; }
+        private int _currentPage;
+        public int CurrentPage { get { return _currentPage; } set { _currentPage = value>TotalPages?TotalPages:value; } }
 
         public int TotalPages
         {

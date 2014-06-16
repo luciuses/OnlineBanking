@@ -33,6 +33,10 @@ DIV.pager A.selected {
   border-color: #5c7deb;
   border-collapse: collapse;
 }
+.grid th:hover {
+  cursor: pointer;
+  background-color: #cfd8e6;
+}
 .grid th {
   border: 1px solid;
   background-color: #98afef;
@@ -58,10 +62,6 @@ DIV.pager A.selected {
   white-space: nowrap;
 }
 .grid tr:hover td {
-  background: #cfd8e6;
-  cursor: pointer;
-}
-.grid th:hover {
   background: #cfd8e6;
   cursor: pointer;
 }

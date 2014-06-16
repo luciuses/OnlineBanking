@@ -46,6 +46,10 @@ DIV.pager
     margin: 20px 5%;
     border-color: @grid-border-color;
     border-collapse:collapse;
+    th:hover{
+        cursor:pointer;
+        background-color: @row-hover-color;
+    }
     th {
         border: 1px solid;
         background-color: @th-back-color;
@@ -76,10 +80,7 @@ DIV.pager
         background:@row-hover-color;
         cursor:pointer;
     }
-    th:hover{
-        background:@row-hover-color;
-        cursor:pointer;
-    }
+    
 }
 
 .submit-delete{

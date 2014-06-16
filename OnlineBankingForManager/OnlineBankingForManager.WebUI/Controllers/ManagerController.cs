@@ -31,24 +31,27 @@ namespace OnlineBankingForManager.WebUI.Controllers
            
             try
             {
+                PagingInfo pi = new PagingInfo
+                {
+                    ItemsPerPage = PageSize,
+                    TotalItems = status == null
+                        ? repository.Clients.Count()
+                        : repository.Clients.Where(e => e.Status == status).Count(),
+                    CurrentPage = page
+                };
+
                 ClientListViewModel viewModel = new ClientListViewModel
                 {
+                    PagingInfo = pi,
                     Clients = repository.Clients
-                      .Where(c => status == null || c.Status == status)
-                      .OrderBy(String.IsNullOrEmpty(order)?"ClientId":order)
-                      .Skip((page - 1) * PageSize)
-                      .Take(PageSize).ToList(),
-                    PagingInfo = new PagingInfo
-                    {
-                        CurrentPage = page,
-                        ItemsPerPage = PageSize,
-                        TotalItems = status == null ?
-                          repository.Clients.Count() :
-                          repository.Clients.Where(e => e.Status == status).Count()
-                    },
+                        .Where(c => status == null || c.Status == status)
+                        .OrderBy(String.IsNullOrEmpty(order) ? "ClientId" : order)
+                        .Skip((pi.CurrentPage - 1) * PageSize)
+                        .Take(PageSize).ToList(),
                     CurrentStatusClient = status,
                     CurrentOrderClients = order
                 };
+                
                 ViewData["StatusList"]=Enum.GetValues(typeof (StatusClient)).Cast<StatusClient>();
                 return View(viewModel);
             }

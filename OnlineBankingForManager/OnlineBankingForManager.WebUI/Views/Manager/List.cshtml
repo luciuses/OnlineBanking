@@ -81,6 +81,7 @@
         var idAttr = $(this).attr('id');
         var currOrder="@Model.CurrentOrderClients";
         $(this).attr('class', currOrder.match("^" + idAttr) ? (currOrder.match("DESC$") ? 'orderDesc' : 'order') : 'no_order');
+        $(this).attr('title', 'Press for sort by '+$(this).text());
     });
     $('select').change(function() {
         window.location.href = '/Manager/List/' + "?" +

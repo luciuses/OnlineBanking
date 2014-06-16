@@ -533,3 +533,15 @@ Expression expected (at index 0)
 Expression expected (at index 0)
 2014-06-15 10:08:47,492 [5] Logger ERROR System.Linq.Dynamic.ParseException when get Clients:Expression expected (at index 0) 
 Expression expected (at index 0)
+2014-06-15 23:16:41,732 [5] Logger ERROR System.DivideByZeroException when get Clients:System.DivideByZeroException: Attempted to divide by zero.
+   at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at OnlineBankingForManager.WebUI.Models.PagingInfo.get_TotalPages() in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Models\PagingInfo.cs:line 21
+   at OnlineBankingForManager.WebUI.Models.PagingInfo.set_CurrentPage(Int32 value) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Models\PagingInfo.cs:line 16
+   at OnlineBankingForManager.WebUI.Controllers.ManagerController.List(Int32 page, Nullable`1 status, String order) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Controllers\ManagerController.cs:line 34 
+System.DivideByZeroException: Attempted to divide by zero.
+   at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at OnlineBankingForManager.WebUI.Models.PagingInfo.get_TotalPages() in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Models\PagingInfo.cs:line 21
+   at OnlineBankingForManager.WebUI.Models.PagingInfo.set_CurrentPage(Int32 value) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Models\PagingInfo.cs:line 16
+   at OnlineBankingForManager.WebUI.Controllers.ManagerController.List(Int32 page, Nullable`1 status, String order) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Controllers\ManagerController.cs:line 34
