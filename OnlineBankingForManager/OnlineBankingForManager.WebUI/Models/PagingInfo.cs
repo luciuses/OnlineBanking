@@ -8,9 +8,21 @@ namespace OnlineBankingForManager.WebUI.Models
     public class PagingInfo
     {
         public int TotalItems { get; set; }
-        public int ItemsPerPage { get; set; }
+        private int _itemsPerPage;
+
+        public int ItemsPerPage
+        {
+            get { return _itemsPerPage <= 0 ? 1 : _itemsPerPage; }
+            set { _itemsPerPage = value; }
+        }
+
         private int _currentPage;
-        public int CurrentPage { get { return _currentPage; } set { _currentPage = value>TotalPages?TotalPages:value; } }
+
+        public int CurrentPage
+        {
+            get { return _currentPage; }
+            set { _currentPage = value > TotalPages ? TotalPages : value; }
+        }
 
         public int TotalPages
         {

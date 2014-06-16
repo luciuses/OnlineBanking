@@ -28,10 +28,10 @@ namespace OnlineBankingForManager.WebUI.Controllers
         [ImportModelStateFromTempData]
         public ViewResult List(int page,StatusClient? status, string order)
         {
-           
+            PagingInfo pi=null;
             try
             {
-                PagingInfo pi = new PagingInfo
+                pi = new PagingInfo
                 {
                     ItemsPerPage = PageSize,
                     TotalItems = status == null
@@ -52,7 +52,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
                     CurrentOrderClients = order
                 };
                 
-                ViewData["StatusList"]=Enum.GetValues(typeof (StatusClient)).Cast<StatusClient>();
+                
                 return View(viewModel);
             }
             catch (EntityException ex)
@@ -65,7 +65,8 @@ namespace OnlineBankingForManager.WebUI.Controllers
                 ModelState.AddModelError(String.Empty, string.Format("{0} error:{1}, try again later.",ex.GetType().ToString(), ex.Message));
                 Logger.Log.Error(String.Format("{0} when get Clients:{1} ", ex.GetType().ToString(), ex.ToString()), ex);
             }
-            return View(new ClientListViewModel{Clients=new List<Client>(),CurrentStatusClient = null, PagingInfo = new PagingInfo{CurrentPage = 1,ItemsPerPage = PageSize,TotalItems = 0}});
+            pi = new PagingInfo {CurrentPage = 1, ItemsPerPage = PageSize, TotalItems = 0};
+            return View(new ClientListViewModel{PagingInfo = pi,Clients=new List<Client>(),CurrentStatusClient = null});
         }
         
         public ViewResult Edit(int clientId, string returnUrl)

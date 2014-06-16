@@ -22,10 +22,6 @@
             <th id="Deposit">Deposit</th>
         </tr>
 
-        @* @for (int i = 0; i < 7; i++)
-        {
-            Html.RenderPartial("ClientHeader", i);
-        }*@
         <tr>
  
                 @for (int i = 0; i < 7; i++)
@@ -33,7 +29,7 @@
                      if (i == 5)
                      {
                          <td>
-                             @Html.DropDownListFor(m => m.CurrentStatusClient,new SelectList(ViewData["StatusList"] as IEnumerable),"All")
+                             @Html.DropDownListFor(m => m.CurrentStatusClient,new SelectList(Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>()),"All")
                          </td>
                      }
                      else

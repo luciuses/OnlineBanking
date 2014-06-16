@@ -16,6 +16,7 @@ namespace OnlineBankingForManager.NUnitTests
     [TestFixture]
     public class AccountNUnitTestFixture
     {
+        // Test get login view
         [Test]
         public void Login_GetViewTest()
         {

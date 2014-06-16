@@ -26,23 +26,6 @@ namespace OnlineBankingForManager.WebUI
               }
             );
 
-            //routes.MapRoute(null,
-            //  "Page{page}",
-            //  new { controller = "Manager", action = "List", status = (StatusClient?)null, order = (string)null },
-            //  new { page = @"\d+" }
-            //);
-
-            //routes.MapRoute(null,
-            //  "{category}",
-            //  new { controller = "Manager", action = "List", page = 1 }
-            //);
-
-            //routes.MapRoute(null,
-            //  "{status}/Page{page}",
-            //  new { controller = "Manager", action = "List" },
-            //  new { page = @"\d+" }
-            //);
-
             routes.MapRoute(null, "{controller}/{action}");
         }
     }

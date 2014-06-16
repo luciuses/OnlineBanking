@@ -4,6 +4,7 @@ using OnlineBankingForManager.Domain.Entities;
 
 namespace OnlineBankingForManager.Domain.Concrete
 {
+
     public class EFClientRepository : IClientRepository
     {
         private EFDbContext context = new EFDbContext();

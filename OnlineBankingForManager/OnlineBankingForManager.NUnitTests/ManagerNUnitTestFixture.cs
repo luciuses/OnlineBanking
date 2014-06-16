@@ -197,7 +197,6 @@ namespace OnlineBankingForManager.NUnitTests
             Assert.IsFalse(((ViewResult)result).ViewData.ModelState.IsValid);
             Assert.IsNotNull(((ViewResult)result).Model as Client);
             Assert.AreEqual((((ViewResult)result).Model as Client).ClientId, 0);
-            Assert.AreEqual(((ViewResult)result).ViewData["StatusList"],Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>());
         }
         [Test]
         public void Cannot_Edit_With_Exception()
@@ -216,7 +215,6 @@ namespace OnlineBankingForManager.NUnitTests
             Assert.IsFalse(((ViewResult)result).ViewData.ModelState.IsValid);
             Assert.IsNotNull(((ViewResult)result).Model as Client);
             Assert.AreEqual((((ViewResult)result).Model as Client).ClientId, 0);
-            Assert.AreEqual(((ViewResult)result).ViewData["StatusList"], Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>());
         }
         [Test]
         public void Cannot_Edit_Nonexistent_Client()
@@ -306,7 +304,6 @@ namespace OnlineBankingForManager.NUnitTests
             Assert.IsFalse(((ViewResult)result).ViewData.ModelState.IsValid);
             Assert.IsNotNull(((ViewResult)result).Model as Client);
             Assert.AreEqual((((ViewResult)result).Model as Client), client);
-            Assert.AreEqual(((ViewResult)result).ViewData["StatusList"], Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>());
         }
         [Test]
         public void Cannot_Save_Client_With_Exception()
@@ -328,7 +325,6 @@ namespace OnlineBankingForManager.NUnitTests
             Assert.IsFalse(((ViewResult)result).ViewData.ModelState.IsValid);
             Assert.IsNotNull(((ViewResult)result).Model as Client);
             Assert.AreEqual((((ViewResult)result).Model as Client), client);
-            Assert.AreEqual(((ViewResult)result).ViewData["StatusList"], Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>());
         }
         [Test]
         public void Cannot_Save_Invalid_Changes()
@@ -351,7 +347,6 @@ namespace OnlineBankingForManager.NUnitTests
             Assert.IsFalse(((ViewResult)result).ViewData.ModelState.IsValid);
             Assert.IsNotNull(((ViewResult)result).Model as Client);
             Assert.AreEqual((((ViewResult)result).Model as Client), client);
-            Assert.AreEqual(((ViewResult)result).ViewData["StatusList"], Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>());
         }
 
         [Test]
@@ -444,7 +439,6 @@ namespace OnlineBankingForManager.NUnitTests
             Assert.IsNotNull(((ViewResult)result).Model as Client);
             Assert.AreEqual((((ViewResult)result).Model as Client).ClientId, 0);
             Assert.AreEqual((((ViewResult)result).Model as Client).DateBirth, DateTime.Today);
-            Assert.AreEqual(((ViewResult)result).ViewData["StatusList"], Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>());
         }
     }
 }
