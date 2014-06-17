@@ -40,7 +40,9 @@
                 override: true,
                 position: {
                     my: 'left center',
-                    at: 'right center'
+                    at: 'right center',
+                    target: 'mouse',
+                    adjust: {mouse: true, x: 20, y: -10}
                 }
             });
             $('.field-validation-error').each(function() {
@@ -67,5 +69,6 @@
             });
         });
     </script>
+
 </body>
 </html>

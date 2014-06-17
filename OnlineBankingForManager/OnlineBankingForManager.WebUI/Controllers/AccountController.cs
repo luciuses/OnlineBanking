@@ -1,4 +1,5 @@
 ﻿using System;
+//using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Diagnostics.Contracts;
 using System.Web;
@@ -9,6 +10,7 @@ using Microsoft.SqlServer.Server;
 using OnlineBankingForManager.WebUI.HtmlHelpers;
 using OnlineBankingForManager.WebUI.Infrastructure;
 using OnlineBankingForManager.WebUI.Infrastructure.Abstract;
+
 using WebMatrix.WebData;
 using OnlineBankingForManager.WebUI.Models;
 
@@ -224,7 +226,12 @@ namespace OnlineBankingForManager.WebUI.Controllers
             ViewBag.Username = username;
             return View();
         }
-
+        public PartialViewResult UserInfo()
+        {
+            var model = new UserInfo();
+            model.CurrentUser = authProvider.CurrentUser;
+            return this.PartialView(model);
+        }
     }
 
 }

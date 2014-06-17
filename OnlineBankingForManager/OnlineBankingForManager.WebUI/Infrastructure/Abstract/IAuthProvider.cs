@@ -14,5 +14,6 @@ namespace OnlineBankingForManager.WebUI.Infrastructure.Abstract
         int GetUserId(string username);
         string GetUserNameById(int userId);
         void Logout();
+        string CurrentUser { get ; }
     }
 }

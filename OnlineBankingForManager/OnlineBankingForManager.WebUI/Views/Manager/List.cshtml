@@ -7,56 +7,62 @@
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_ManagerLayout.cshtml";
 }
+<script src="~/Scripts/jquery.printElement.js"></script>
 <link rel="stylesheet/less" type="text/css" href="~/Content/ListStyle.less">
 
 <div class="scroll">
-    <table class="grid">
-       
-        <tr>
-            <th id="ContractNumber">Contract Number</th>
-            <th id="FirstName">First Name</th>
-            <th id="LastName">Last Name</th>
-            <th id="DateBirth">Date of Birth</th>
-            <th id="PhoneNumber">Phone Number</th>
-            <th id="Status">Status</th>
-            <th id="Deposit">Deposit</th>
-        </tr>
+    <div class="print">
+        <link rel="stylesheet/less" type="text/css" href="~/Content/PrintListStyle.less" media="print">
+        <table class="grid">
+            <tr>
+                <th id="ContractNumber">Contract Number</th>
+                <th id="FirstName">First Name</th>
+                <th id="LastName">Last Name</th>
+                <th id="DateBirth">Date of Birth</th>
+                <th id="PhoneNumber">Phone Number</th>
+                <th id="Status">Status</th>
+                <th id="Deposit">Deposit</th>
+            </tr>
 
-        <tr>
+            <tr id="filter-row">
  
                 @for (int i = 0; i < 7; i++)
-                 {
-                     if (i == 5)
-                     {
-                         <td>
-                             @Html.DropDownListFor(m => m.CurrentStatusClient,new SelectList(Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>()),"All")
-                         </td>
-                     }
-                     else
-                     {
-                         <td></td>
-                     }
+                {
+                    if (i == 5)
+                    {
+                        <td>
+                            @Html.DropDownListFor(m => m.CurrentStatusClient,new SelectList(Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>()),"All",new{@title="Filter by status"})
+                        </td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
 
-                 }
-        </tr>
-        @foreach (var item in Model.Clients)
-        {
-            Html.RenderPartial("ClientSummary", item);
-        }
-        <tr class="row-list" onclick="location.href = '@(Url.Action("Create", "Manager", new { returnUrl = Request.Url.PathAndQuery }))'" title="Press for create new client.">
-            @for (int i = 0; i < 7; i++)
+                }
+            </tr>
+            @foreach (var item in Model.Clients)
             {
-                <td>...</td>
+                Html.RenderPartial("ClientSummary", item);
             }
-        </tr>
-    </table>
+            <tr id="row-create" class="row-list" onclick="location.href = '@(Url.Action("Create", "Manager", new { returnUrl = Request.Url.PathAndQuery }))'" title="Press for create new client.">
+                @for (int i = 0; i < 7; i++)
+                {
+                    <td>...</td>
+                }
+            </tr>
+        </table>
+    </div>
     <div class="pager">
-   @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
-    new { page = x, status = Model.CurrentStatusClient,order=Model.CurrentOrderClients }))
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
+            new { page = x, pageSize=Model.PagingInfo.ItemsPerPage, status = Model.CurrentStatusClient,order=Model.CurrentOrderClients }))
+        <br>
+        <button id="button_print" title="Print table"></button>
+        Clients on the page:  @Html.TextBoxFor(m=>m.PagingInfo.ItemsPerPage,new {@id="input_page_size"})
+        
+    </div>
 </div>
-</div>
-
-<script id="4e d2wvc">
+<script>
     $('.grid .row-list .td-delete').click(function () {
         var c = confirm("Are you sure delete client ?");
         return c;
@@ -69,8 +75,9 @@
             '/Manager/List/' + "?" +
             $.param({
                 page: '@Model.PagingInfo.CurrentPage',
+                pageSize: '@Model.PagingInfo.ItemsPerPage',
                 status: '@Model.CurrentStatusClient',
-            order: order
+                order: order
         });
     });
     $('th').each(function() {
@@ -83,9 +90,28 @@
         window.location.href = '/Manager/List/' + "?" +
             $.param({
                 page: '@Model.PagingInfo.CurrentPage',
+                pageSize: '@Model.PagingInfo.ItemsPerPage',
                 status: $(this).val(),
                 order: '@Model.CurrentOrderClients'
             });
     });
-   
+    $('#input_page_size').change(function () {
+        window.location.href = '/Manager/List/' + "?" +
+            $.param({
+                page: '@Model.PagingInfo.CurrentPage',
+                pageSize:$(this).val(),
+                status: '@Model.CurrentStatusClient',
+                order: '@Model.CurrentOrderClients'
+            });
+    });
+    $(function() {
+        $('#button_print').click(function() {
+            $('.print').printElement({
+                pageTitle: 'Your Clients List - page:' + '@Model.PagingInfo.CurrentPage from ' + '@Model.PagingInfo.TotalPages' +
+                ('@Model.CurrentStatusClient' != '' ? ', filter by : @Model.CurrentStatusClient' : '') +
+                ('@Model.CurrentOrderClients' != '' ? ', order by : @Model.CurrentOrderClients' : ''),
+                printMode: 'popup'
+            });
+        });
+    });
 </script>

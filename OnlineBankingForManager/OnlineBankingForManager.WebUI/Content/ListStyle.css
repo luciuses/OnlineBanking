@@ -78,3 +78,13 @@ DIV.pager A.selected {
 .td-delete {
   width: 20px;
 }
+#input_page_size {
+  width: 2em;
+}
+#button_print {
+  width: 30px;
+  height: 30px;
+  background-image: url(Image/Print.png);
+  background-size: contain;
+  float: left;
+}

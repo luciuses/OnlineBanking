@@ -18,7 +18,6 @@ namespace OnlineBankingForManager.WebUI.Controllers
     [Authorize(Roles = "ActiveUser")]
     public class ManagerController : Controller
     {
-        public int PageSize = 10;
         private IClientRepository repository;
 
         public ManagerController(IClientRepository repo)
@@ -26,18 +25,18 @@ namespace OnlineBankingForManager.WebUI.Controllers
             repository = repo;
         }
         [ImportModelStateFromTempData]
-        public ViewResult List(int page,StatusClient? status, string order)
+        public ViewResult List(int? page,int? pageSize,StatusClient? status, string order)
         {
             PagingInfo pi=null;
             try
             {
                 pi = new PagingInfo
                 {
-                    ItemsPerPage = PageSize,
+                    ItemsPerPage = pageSize??10,
                     TotalItems = status == null
                         ? repository.Clients.Count()
                         : repository.Clients.Where(e => e.Status == status).Count(),
-                    CurrentPage = page
+                    CurrentPage = page??1
                 };
 
                 ClientListViewModel viewModel = new ClientListViewModel
@@ -46,13 +45,12 @@ namespace OnlineBankingForManager.WebUI.Controllers
                     Clients = repository.Clients
                         .Where(c => status == null || c.Status == status)
                         .OrderBy(String.IsNullOrEmpty(order) ? "ClientId" : order)
-                        .Skip((pi.CurrentPage - 1) * PageSize)
-                        .Take(PageSize).ToList(),
+                        .Skip((pi.CurrentPage - 1) * pi.ItemsPerPage)
+                        .Take(pi.ItemsPerPage).ToList(),
                     CurrentStatusClient = status,
                     CurrentOrderClients = order
                 };
-                
-                
+
                 return View(viewModel);
             }
             catch (EntityException ex)
@@ -65,7 +63,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
                 ModelState.AddModelError(String.Empty, string.Format("{0} error:{1}, try again later.",ex.GetType().ToString(), ex.Message));
                 Logger.Log.Error(String.Format("{0} when get Clients:{1} ", ex.GetType().ToString(), ex.ToString()), ex);
             }
-            pi = new PagingInfo {CurrentPage = 1, ItemsPerPage = PageSize, TotalItems = 0};
+            pi = new PagingInfo {CurrentPage = page??1, ItemsPerPage = pageSize??10, TotalItems = 0};
             return View(new ClientListViewModel{PagingInfo = pi,Clients=new List<Client>(),CurrentStatusClient = null});
         }
         

@@ -26,7 +26,11 @@ namespace OnlineBankingForManager.WebUI.Models
 
         public int TotalPages
         {
-            get { return (int)Math.Ceiling((decimal)TotalItems / ItemsPerPage); }
+            get
+            {
+                var tp = (int) Math.Ceiling((decimal) TotalItems/ItemsPerPage);
+                return tp<=0?1:tp ; 
+            }
         }
     }
 }

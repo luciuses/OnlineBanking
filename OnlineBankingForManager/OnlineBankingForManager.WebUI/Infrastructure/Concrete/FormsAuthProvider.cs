@@ -60,5 +60,7 @@ namespace OnlineBankingForManager.WebUI.Infrastructure.Concrete
                 var profile = usersContext.UserProfiles.FirstOrDefault(d => d.UserId.Equals(userId));
                 return profile.UserName;
         }
+
+        public string CurrentUser { get { return WebSecurity.CurrentUserName; } }
     }
 }

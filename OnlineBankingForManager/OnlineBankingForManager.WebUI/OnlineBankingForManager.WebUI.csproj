@@ -211,12 +211,20 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
+    <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Image\Delete_Icon_16.png" />
     <Content Include="Content\Image\logo.png" />
     <Content Include="Content\jquery.qtip.min.css" />
+    <None Include="Content\PrintListStyle.less" />
+    <Content Include="Content\PrintListStyle.css">
+      <DependentUpon>PrintListStyle.less</DependentUpon>
+    </Content>
+    <Content Include="Content\PrintListStyle.min.css">
+      <DependentUpon>PrintListStyle.less</DependentUpon>
+    </Content>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -285,6 +293,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.printElement.js" />
     <Content Include="Scripts\jquery.qtip-1.0.0-rc3.min.js" />
     <Content Include="Scripts\jquery.qtip.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -321,6 +330,7 @@
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
     <Content Include="Views\Account\Unlock.cshtml" />
+    <Content Include="Views\Account\UserInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

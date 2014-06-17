@@ -84,7 +84,7 @@ namespace OnlineBankingForManager.NUnitTests
             // create a controller
             ManagerController controller = new ManagerController(mockA.Object);
             // Action
-            ActionResult result = controller.List(1,StatusClient.Classic,"ClientId");
+            ActionResult result = controller.List(1, 10, StatusClient.Classic, "ClientId");
             // Assert
             Assert.IsInstanceOf(typeof(ViewResult), result);
             List<Client> clients = (List<Client>)((ClientListViewModel)((ViewResult)result).Model).Clients;
@@ -104,7 +104,7 @@ namespace OnlineBankingForManager.NUnitTests
             // create a controller
             ManagerController controller = new ManagerController(mockA.Object);
             // Action
-            ActionResult result = controller.List(1, StatusClient.Classic, "ClientId");
+            ActionResult result = controller.List(1,10, StatusClient.Classic, "ClientId");
             // Assert
             Assert.IsInstanceOf(typeof(ViewResult), result);
             List<Client> clients = (List<Client>)((ClientListViewModel)((ViewResult)result).Model).Clients;
@@ -120,7 +120,7 @@ namespace OnlineBankingForManager.NUnitTests
             // create a controller
             ManagerController controller = new ManagerController(mockA.Object);
             // Action
-            ActionResult result = controller.List(1, StatusClient.Classic, "ClientId");
+            ActionResult result = controller.List(1, 10, StatusClient.Classic, "ClientId");
             // Assert
             Assert.IsInstanceOf(typeof(ViewResult), result);
             List<Client> clients = (List<Client>)((ClientListViewModel)((ViewResult)result).Model).Clients;
