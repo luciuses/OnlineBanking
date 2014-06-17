@@ -64,7 +64,7 @@
         <button id="button_print" title="Print table"></button>
         Clients Total : @Model.ClientsTotal, VIP : @Model.ClientsVipStatus, Classic : @Model.ClientsClassicStatus, Deposit : @Model.ClientsUseDeposit
     </div>
-    Clients on the page:  @Html.TextBoxFor(m=>m.PagingInfo.ItemsPerPage,new {@id="input_page_size"})
+    Clients on the page:  @Html.TextBoxFor(m=>m.PagingInfo.ItemsPerPage,new {@id="input_page_size",@type="number"})
         
 </div>
 
