@@ -63,7 +63,7 @@ DIV.pager A.selected {
   text-align: center;
   white-space: nowrap;
 }
-.grid tr:hover td {
+.grid .row-list:hover td {
   background: #cfd8e6;
   cursor: pointer;
 }

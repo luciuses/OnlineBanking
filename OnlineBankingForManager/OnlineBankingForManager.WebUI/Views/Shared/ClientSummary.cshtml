@@ -1,19 +1,28 @@
 ﻿@model OnlineBankingForManager.Domain.Entities.Client
 
-<tr class="row-list" onclick="location.href = '@(Url.Action("Edit","Manager", new {clientId=Model.ClientId,returnUrl=Request.Url.PathAndQuery}))'" title="Press for edit client.">
-    <td>@Model.ContractNumber</td>
-    <td>@Model.FirstName</td>
-    <td>@Model.LastName</td>
-    <td>@(((DateTime)Model.DateBirth).ToShortDateString())</td>
-    <td>@Model.PhoneNumber</td>
-    <td>@Model.Status</td>
-    <td>@Html.DisplayFor(m=>m.Deposit,new{@class="checkbox-list"})</td>
+<tr class="row-list" >
+    <td class="td-data">@Model.ContractNumber</td>
+    <td class="td-data">@Model.FirstName</td>
+    <td class="td-data">@Model.LastName</td>
+    <td class="td-data">@(((DateTime)Model.DateBirth).ToShortDateString())</td>
+    <td class="td-data">@Model.PhoneNumber</td>
+    <td class="td-data">@Model.Status</td>
+    <td class="td-data">@Html.DisplayFor(m=>m.Deposit,new{@class="checkbox-list"})</td>
     <td class="td-delete">
-         @using (Html.BeginForm("Delete", "Manager", new { returnUrl = Request.Url.PathAndQuery }, FormMethod.Post, new { @class = "form-delete-edit" }))
+        @using (Html.BeginForm("Delete", "Manager", new { returnUrl = Request.Url.PathAndQuery }, FormMethod.Post, new { @class = "form-delete-edit" }))
         {
             @Html.Hidden("ClientId", Model.ClientId)
-            <input type="submit" value="" class="submit-delete" title="Press for delete client."/>
+            <input type="submit" value="" class="submit-delete" title="Click for delete client."/>
         }
    
     </td>
 </tr>
+<script>
+    $('.td-data').click(function () {
+        window.location.href = '/Manager/Edit/' + "?" +
+            $.param({
+                clientId: '@Model.ClientId', returnUrl: '@Request.Url.PathAndQuery'
+            });
+    });
+    $('.td-data').attr('title','Click for edit client');
+</script>

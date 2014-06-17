@@ -17,8 +17,8 @@
 
     <header >
         <div id="logo" onclick="location.href = '@(Url.Action("List","Manager"))'"  >
-            <img src="~/Content/Image/logo.png" alt="" id="logo-image" title="Press for go to home page."/>
-            <div id="logo-text" title="Press for go to home page.">Welcome to online banking system</div>
+            <img src="~/Content/Image/logo.png" alt="" id="logo-image" title="Click for go to home page."/>
+            <div id="logo-text" title="Click for go to home page.">Welcome to online banking system</div>
         </div>
        
     </header>
@@ -36,14 +36,17 @@
     <script>
 
         $(function() {
-            $('[title]').filter(':not(.input-validation-error)').qtip({
+            $('[title]').filter(':not(.input-validation-error)').each(function() {
+                var toLeft=$(this).offset().left>$(document).width()/2;
+                $(this).qtip({
                 override: true,
                 position: {
-                    my: 'left center',
-                    at: 'right center',
+                    my: toLeft?'right center':'left center',
+                    at: toLeft?'left center':'right center',
                     target: 'mouse',
-                    adjust: {mouse: true, x: 20, y: -10}
+                    adjust: {mouse: true, x: toLeft?-20:20, y: -10}
                 }
+                });
             });
             $('.field-validation-error').each(function() {
                 // Get the name of the element the error message is intended for

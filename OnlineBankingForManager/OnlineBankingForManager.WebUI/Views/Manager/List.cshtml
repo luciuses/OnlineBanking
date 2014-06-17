@@ -45,10 +45,10 @@
                 {
                     Html.RenderPartial("ClientSummary", item);
                 }
-                <tr id="row-create" class="row-list" onclick="location.href = '@(Url.Action("Create", "Manager", new { returnUrl = Request.Url.PathAndQuery }))'" title="Press for create new client.">
+                <tr id="row-create" class="row-list" onclick="location.href = '@(Url.Action("Create", "Manager", new { returnUrl = Request.Url.PathAndQuery }))'" title="Click for create new client.">
                     @for (int i = 0; i < 7; i++)
                     {
-                        <td>...</td>
+                        <td class="cell">...</td>
                     }
                 </tr>
             </table>
@@ -69,7 +69,7 @@
 </div>
 
 <script>
-    $('.grid .row-list .td-delete').click(function () {
+    $('.submit-delete').click(function () {
         var c = confirm("Are you sure delete client ?");
         return c;
     });
@@ -90,7 +90,7 @@
         var idAttr = $(this).attr('id');
         var currOrder="@Model.CurrentOrderClients";
         $(this).attr('class', currOrder.match("^" + idAttr) ? (currOrder.match("DESC$") ? 'orderDesc' : 'order') : 'no_order');
-        $(this).attr('title', 'Press for sort by '+$(this).text());
+        $(this).attr('title', 'Click for sort by '+$(this).text());
     });
     $('select').change(function() {
         window.location.href = '/Manager/List/' + "?" +
@@ -120,4 +120,5 @@
             });
         });
     });
+    
 </script>
