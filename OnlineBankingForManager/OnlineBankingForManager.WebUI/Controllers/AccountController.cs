@@ -228,8 +228,22 @@ namespace OnlineBankingForManager.WebUI.Controllers
         }
         public PartialViewResult UserInfo()
         {
+            
             var model = new UserInfo();
-            model.CurrentUser = authProvider.CurrentUser;
+            try
+            {
+                model.CurrentUser = authProvider.CurrentUser;
+            }
+            catch (SqlException ex)
+            {
+                ModelState.AddModelError(String.Empty, string.Format("Authentication service error:{0}, try again later.", ex.Message));
+                Logger.Log.Error(ex.Message + " when geting current username");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(String.Empty, string.Format("{0} error:{1}.", ex.GetType().ToString(), ex.Message));
+                Logger.Log.Error(ex.Message + " when geting current username");
+            }
             return this.PartialView(model);
         }
     }

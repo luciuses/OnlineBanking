@@ -16,6 +16,59 @@ namespace OnlineBankingForManager.NUnitTests
     [TestFixture]
     public class AccountNUnitTestFixture
     {
+        [Test]
+        public void Get_User_Info()
+        {
+            // Arrange
+            string currentUserName = "current-user";
+            Mock<IAuthProvider> mockA = new Mock<IAuthProvider>();
+            mockA.Setup(m => m.CurrentUser).Returns(currentUserName);
+            // create a controller
+            AccountController controller = new AccountController(mockA.Object, null, null);
+            // Action
+            ActionResult result = controller.UserInfo();
+            // Assert
+            Assert.IsInstanceOf(typeof(PartialViewResult), result);
+            Assert.IsTrue(((PartialViewResult)result).ViewData.ModelState.IsValid);
+            Assert.AreEqual((((PartialViewResult)result).Model as UserInfo).CurrentUser, currentUserName);
+        }
+
+        [Test]
+        public void Cannot_Get_User_Info_With_SqlException()
+        {
+            // Arrange
+            string currentUserName = "current-user";
+            Mock<IAuthProvider> mockA = new Mock<IAuthProvider>();
+            mockA.Setup(m => m.CurrentUser)
+                .Throws(FormatterServices.GetUninitializedObject(typeof (SqlException)) as SqlException);
+            // create a controller
+            AccountController controller = new AccountController(mockA.Object, null, null);
+            // Action
+            ActionResult result = controller.UserInfo();
+            // Assert
+            Assert.IsInstanceOf(typeof (PartialViewResult), result);
+            Assert.IsFalse(((PartialViewResult) result).ViewData.ModelState.IsValid);
+            Assert.AreEqual((((PartialViewResult)result).Model as UserInfo).CurrentUser, null);
+        }
+
+        [Test]
+        public void Cannot_Get_User_Info_With_Exception()
+        {
+            // Arrange
+            string currentUserName = "current-user";
+            UserInfo ui = new UserInfo {CurrentUser = currentUserName};
+            Mock<IAuthProvider> mockA = new Mock<IAuthProvider>();
+            mockA.Setup(m => m.CurrentUser).Throws<Exception>();
+            // create a controller
+            AccountController controller = new AccountController(mockA.Object, null, null);
+            // Action
+            ActionResult result = controller.UserInfo();
+            // Assert
+            Assert.IsInstanceOf(typeof (PartialViewResult), result);
+            Assert.IsFalse(((PartialViewResult) result).ViewData.ModelState.IsValid);
+            Assert.AreEqual((((PartialViewResult)result).Model as UserInfo).CurrentUser, null);
+        }
+
         // Test get login view
         [Test]
         public void Login_GetViewTest()
