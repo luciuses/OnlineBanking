@@ -48,7 +48,14 @@ namespace OnlineBankingForManager.WebUI.Controllers
                         .Skip((pi.CurrentPage - 1) * pi.ItemsPerPage)
                         .Take(pi.ItemsPerPage).ToList(),
                     CurrentStatusClient = status,
-                    CurrentOrderClients = order
+                    CurrentOrderClients = order,
+                    ClientsTotal = repository.Clients.Count(),
+                    ClientsClassicStatus = repository.Clients
+                        .Where(c => c.Status == StatusClient.Classic).Count(),
+                    ClientsVipStatus = repository.Clients
+                        .Where(c => c.Status == StatusClient.VIP).Count(),
+                    ClientsUseDeposit = repository.Clients
+                        .Where(c => c.Deposit).Count()
                 };
 
                 return View(viewModel);

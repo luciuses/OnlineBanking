@@ -57,7 +57,11 @@
         @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
             new { page = x, pageSize=Model.PagingInfo.ItemsPerPage, status = Model.CurrentStatusClient,order=Model.CurrentOrderClients }))
         <br>
-        <button id="button_print" title="Print table"></button>
+        
+        <div id="summary-info">
+            <button id="button_print" title="Print table"></button>
+            Clients Total:@Model.ClientsTotal, VIP:@Model.ClientsVipStatus, Classic:@Model.ClientsClassicStatus, Deposit:@Model.ClientsUseDeposit
+        </div>
         Clients on the page:  @Html.TextBoxFor(m=>m.PagingInfo.ItemsPerPage,new {@id="input_page_size"})
         
     </div>
