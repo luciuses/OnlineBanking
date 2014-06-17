@@ -12,7 +12,7 @@
 <div class="container-table">
     @using (Html.BeginForm("Edit", "Manager",new {ViewBag.ReturnUrl}))
     {
-        @*Html.HiddenFor(m=>m.ClientId)*@
+        @Html.HiddenFor(m=>m.ClientId)
         
         <table class="table-input-fields">
         
