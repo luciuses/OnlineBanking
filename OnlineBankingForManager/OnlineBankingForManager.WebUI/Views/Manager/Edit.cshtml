@@ -1,7 +1,5 @@
-﻿@using System.Collections
-@using System.Web.UI.WebControls
-@using OnlineBankingForManager.Domain.Entities
-@model OnlineBankingForManager.Domain.Entities.Client
+﻿@using OnlineBankingForManager.Domain.Entities
+@model Client
 
 @{
     ViewBag.Title = "Edit";
@@ -10,10 +8,10 @@
 <link rel="stylesheet/less" type="text/css" href="~/Content/EditStyle.less">
 
 <div class="container-table">
-    @using (Html.BeginForm("Edit", "Manager",new {ViewBag.ReturnUrl}))
+    @using (Html.BeginForm("Edit", "Manager", new { ViewBag.ReturnUrl }))
     {
-        @Html.HiddenFor(m=>m.ClientId)
-        
+        @Html.HiddenFor(m => m.ClientId)
+
         <table class="table-input-fields">
         
             <tr>
@@ -23,42 +21,42 @@
             
             <tr>
                 <td class="label-input-field">@Html.LabelFor(m => m.ContractNumber):</td>
-                <td>@Html.TextBoxFor(m => m.ContractNumber,new{@class= "input-field",@title="Client's contract number",@type="number"})*</td>
+                <td>@Html.TextBoxFor(m => m.ContractNumber, new { @class = "input-field", @title = "Client's contract number", @type = "number" })*</td>
                 <td>@Html.ValidationMessageFor(m => m.ContractNumber)</td>
             </tr>
             <tr>
     
                 <td class="label-input-field">@Html.LabelFor(m => m.FirstName):</td>
-                <td>@Html.TextBoxFor(m => m.FirstName,new{@class= "input-field",@title="Client's firstname"})*</td>
+                <td>@Html.TextBoxFor(m => m.FirstName, new { @class = "input-field", @title = "Client's firstname" })*</td>
                 <td>@Html.ValidationMessageFor(m => m.FirstName)</td>
             </tr>
             
             <tr>
                 <td class="label-input-field">@Html.LabelFor(m => m.LastName):</td>
-                <td>@Html.TextBoxFor(m => m.LastName,new{@class= "input-field",@title="Client's lastname"})*</td>
+                <td>@Html.TextBoxFor(m => m.LastName, new { @class = "input-field", @title = "Client's lastname" })*</td>
                 <td>@Html.ValidationMessageFor(m => m.LastName)</td>
             </tr>
 
             <tr>
                 <td class="label-input-field">@Html.LabelFor(m => m.DateBirth):</td>
-                <td>@Html.TextBoxFor(m => m.DateBirth,"{0:yyyy-MM-dd}",new{@class= "input-field",@title="Client's date of birth",@type="date",})*</td>
+                <td>@Html.TextBoxFor(m => m.DateBirth, "{0:yyyy-MM-dd}", new { @class = "input-field", @title = "Client's date of birth", @type = "date", })*</td>
                 <td>@Html.ValidationMessageFor(m => m.DateBirth)</td>
             </tr>
 
             <tr>
                 <td class="label-input-field">@Html.LabelFor(m => m.PhoneNumber):</td>
-                <td>@Html.TextBoxFor(m => m.PhoneNumber,new{@class= "input-field",@title="Client's phone number"})*</td>
+                <td>@Html.TextBoxFor(m => m.PhoneNumber, new { @class = "input-field", @title = "Client's phone number" })*</td>
                 <td>@Html.ValidationMessageFor(m => m.PhoneNumber)</td>
             </tr>
             
             <tr>
                 <td class="label-input-field">@Html.LabelFor(m => m.Status):</td>
-                <td>@Html.DropDownListFor(m=>m.Status,new SelectList(Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>()), new {@title= "Client's status."})</td>
+                <td>@Html.DropDownListFor(m => m.Status, new SelectList(Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>()), new { @title = "Client's status." })</td>
                 <td>@Html.ValidationMessageFor(m => m.Status)</td>
             </tr>
             <tr>
                 <td></td>
-                <td class="checkbox">@Html.CheckBoxFor(m => m.Deposit, new {@title= "Client use deposit."})
+                <td class="checkbox">@Html.CheckBoxFor(m => m.Deposit, new { @title = "Client use deposit." })
                     - @Html.LabelFor(m => m.Deposit)</td>
                 <td>@Html.ValidationMessageFor(m => m.Deposit)</td>
             </tr>
@@ -70,7 +68,7 @@
                              <a href="@ViewBag.ReturnUrl">Cancel and return to List</a>
                          </td></tr>
         </table>
- }
+    }
   
        
 </div>

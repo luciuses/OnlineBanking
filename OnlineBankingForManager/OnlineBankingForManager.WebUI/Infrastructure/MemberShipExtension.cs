@@ -1,16 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="MemberShipExtension.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The member ship extension.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OnlineBankingForManager.WebUI.Infrastructure
 {
+    using System.Web.Security;
+
+    /// <summary>
+    /// The member ship extension.
+    /// </summary>
     public static class MemberShipExtension
     {
+        /// <summary>
+        /// The error code to string.
+        /// </summary>
+        /// <param name="createStatus">
+        /// The create status.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
         public static string ErrorCodeToString(this MembershipCreateStatus createStatus)
         {
-            
             switch (createStatus)
             {
                 case MembershipCreateStatus.DuplicateUserName:
@@ -35,15 +51,18 @@ namespace OnlineBankingForManager.WebUI.Infrastructure
                     return "Invalid user name. Verify the value and try again.";
 
                 case MembershipCreateStatus.ProviderError:
-                    return "The authentication provider returned an error. Check the value entered and try again. If the problem persists, contact your system administrator.";
+                    return
+                        "The authentication provider returned an error. Check the value entered and try again. If the problem persists, contact your system administrator.";
 
                 case MembershipCreateStatus.UserRejected:
-                    return "Create a user request has been canceled. Check the value entered and try again. If the problem persists, contact your system administrator. ";
+                    return
+                        "Create a user request has been canceled. Check the value entered and try again. If the problem persists, contact your system administrator. ";
                 case MembershipCreateStatus.Success:
                     return "Account created successfully";
 
                 default:
-                    return "An unknown error occurred. Check the value entered and try again. If the problem persists, contact your system administrator.";
+                    return
+                        "An unknown error occurred. Check the value entered and try again. If the problem persists, contact your system administrator.";
             }
         }
     }

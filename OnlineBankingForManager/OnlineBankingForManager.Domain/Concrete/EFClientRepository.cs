@@ -1,18 +1,45 @@
-﻿using System.Linq;
-using OnlineBankingForManager.Domain.Abstract;
-using OnlineBankingForManager.Domain.Entities;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="EFClientRepository.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The ef client repository.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OnlineBankingForManager.Domain.Concrete
 {
+    using System.Linq;
+    using OnlineBankingForManager.Domain.Abstract;
+    using OnlineBankingForManager.Domain.Entities;
 
+    /// <summary>
+    /// The ef client repository.
+    /// </summary>
     public class EFClientRepository : IClientRepository
     {
-        private EFDbContext context = new EFDbContext();
+        /// <summary>
+        /// The context.
+        /// </summary>
+        private readonly EFDbContext context = new EFDbContext();
+
+        /// <summary>
+        /// Gets the clients.
+        /// </summary>
         public IQueryable<Client> Clients
         {
-            get { return context.Clients; }
+            get
+            {
+                return context.Clients;
+            }
         }
 
+        /// <summary>
+        /// The save client.
+        /// </summary>
+        /// <param name="client">
+        /// The client.
+        /// </param>
         public void SaveClient(Client client)
         {
             if (client.ClientId == 0)
@@ -33,9 +60,19 @@ namespace OnlineBankingForManager.Domain.Concrete
                     dbEntry.Status = client.Status;
                 }
             }
+
             context.SaveChanges();
         }
 
+        /// <summary>
+        /// The delete client.
+        /// </summary>
+        /// <param name="cliendId">
+        /// The cliend id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Client"/>.
+        /// </returns>
         public Client DeleteClient(int cliendId)
         {
             Client dbEntry = context.Clients.Find(cliendId);
@@ -44,6 +81,7 @@ namespace OnlineBankingForManager.Domain.Concrete
                 context.Clients.Remove(dbEntry);
                 context.SaveChanges();
             }
+
             return dbEntry;
         }
     }

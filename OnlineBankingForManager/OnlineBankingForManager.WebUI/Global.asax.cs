@@ -1,12 +1,28 @@
-﻿using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Global.asax.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The mvc application.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OnlineBankingForManager.WebUI
 {
-    public class MvcApplication : System.Web.HttpApplication
+    using System.Web;
+    using System.Web.Http;
+    using System.Web.Mvc;
+    using System.Web.Optimization;
+    using System.Web.Routing;
+
+    /// <summary>
+    /// The mvc application.
+    /// </summary>
+    public class MvcApplication : HttpApplication
     {
+        /// <summary>
+        /// The application_ start.
+        /// </summary>
         protected void Application_Start()
         {
             Logger.InitLogger();

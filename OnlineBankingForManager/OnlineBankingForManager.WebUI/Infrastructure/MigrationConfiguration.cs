@@ -1,23 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Migrations;
-using System.Linq;
-using System.Web;
-using WebMatrix.WebData;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="MigrationConfiguration.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The migration configuration.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OnlineBankingForManager.WebUI.Infrastructure
 {
+    using System.Data.Entity.Migrations;
+    using System.Web.Security;
+    using WebMatrix.WebData;
+
+    /// <summary>
+    /// The migration configuration.
+    /// </summary>
     public class MigrationConfiguration : DbMigrationsConfiguration<UsersContext>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MigrationConfiguration"/> class.
+        /// </summary>
         public MigrationConfiguration()
         {
-            this.AutomaticMigrationsEnabled = true;  
+            AutomaticMigrationsEnabled = true;
         }
 
+        /// <summary>
+        /// The seed.
+        /// </summary>
+        /// <param name="context">
+        /// The context.
+        /// </param>
         protected override void Seed(UsersContext context)
         {
-            WebSecurity.InitializeDatabaseConnection("UsersContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
-            var role = System.Web.Security.Roles.Provider;
+            WebSecurity.InitializeDatabaseConnection("UsersContext", "UserProfile", "UserId", "UserName", true);
+            RoleProvider role = Roles.Provider;
             if (!role.RoleExists("ActiveUser"))
             {
                 role.CreateRole("ActiveUser");

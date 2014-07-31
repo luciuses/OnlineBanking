@@ -1,16 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="StatusClient.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The status client.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OnlineBankingForManager.Domain.Entities
 {
+    /// <summary>
+    /// The status client.
+    /// </summary>
     public enum StatusClient
     {
-        Classic,
+        /// <summary>
+        /// The classic.
+        /// </summary>
+        Classic, 
+
+        /// <summary>
+        /// The vip.
+        /// </summary>
         VIP
     };
 }

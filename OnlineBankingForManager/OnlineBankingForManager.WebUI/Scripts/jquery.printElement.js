@@ -20,7 +20,8 @@
 *   
 *   Note, Iframe Printing is not supported in Opera and Chrome 3.0, a popup window will be shown instead
 */
-; (function (window, undefined) {
+;
+(function (window, undefined) {
     var document = window["document"];
     var $ = window["jQuery"];
     $.fn["printElement"] = function (options) {
@@ -63,6 +64,7 @@
         "href": '',
         "media": ''
     };
+
     function _printElement(element, opts) {
         //Create markup to be printed
         var html = _getMarkup(element, opts);
@@ -72,8 +74,7 @@
         if (opts["printMode"].toLowerCase() == 'popup') {
             popupOrIframe = window.open('about:blank', 'printElementWindow', 'width=650,height=440,scrollbars=yes');
             documentToWriteTo = popupOrIframe.document;
-        }
-        else {
+        } else {
             //The random ID is to overcome a safari bug http://www.cjboco.com.sharedcopy.com/post.cfm/442dc92cd1c0ca10a5c35210b8166882.html
             var printElementID = "printElement_" + (Math.round(Math.random() * 99999)).toString();
             //Native creation of the element is faster..
@@ -161,8 +162,7 @@
                         html.push('<link type="text/css" rel="stylesheet" href="' + current["href"] + '" media="' + current["media"] + '" >');
                 }
             }
-        }
-        else {
+        } else {
             $("link", document).filter(function () {
                 return $(this).attr("rel").toLowerCase() == "stylesheet";
             }).each(function () {

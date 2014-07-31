@@ -1,13 +1,13 @@
 ﻿@model OnlineBankingForManager.Domain.Entities.Client
 
 <tr class="row-list" >
-    <td class="td-data" onclick="location.href = '@(Url.Action("Edit","Manager", new {clientId=Model.ClientId,returnUrl=Request.Url.PathAndQuery}))'">@Model.ContractNumber</td>
-    <td class="td-data" onclick="location.href = '@(Url.Action("Edit","Manager", new {clientId=Model.ClientId,returnUrl=Request.Url.PathAndQuery}))'">@Model.FirstName</td>
-    <td class="td-data" onclick="location.href = '@(Url.Action("Edit","Manager", new {clientId=Model.ClientId,returnUrl=Request.Url.PathAndQuery}))'">@Model.LastName</td>
-    <td class="td-data" onclick="location.href = '@(Url.Action("Edit","Manager", new {clientId=Model.ClientId,returnUrl=Request.Url.PathAndQuery}))'">@(((DateTime)Model.DateBirth).ToShortDateString())</td>
-    <td class="td-data" onclick="location.href = '@(Url.Action("Edit","Manager", new {clientId=Model.ClientId,returnUrl=Request.Url.PathAndQuery}))'">@Model.PhoneNumber</td>
-    <td class="td-data" onclick="location.href = '@(Url.Action("Edit","Manager", new {clientId=Model.ClientId,returnUrl=Request.Url.PathAndQuery}))'">@Model.Status</td>
-    <td class="td-data" onclick="location.href = '@(Url.Action("Edit","Manager", new {clientId=Model.ClientId,returnUrl=Request.Url.PathAndQuery}))'">@Html.DisplayFor(m=>m.Deposit,new{@class="checkbox-list"})</td>
+    <td class="td-data" onclick=" location.href = '@(Url.Action("Edit", "Manager", new { clientId = Model.ClientId, returnUrl = Request.Url.PathAndQuery }))' ">@Model.ContractNumber</td>
+    <td class="td-data" onclick=" location.href = '@(Url.Action("Edit", "Manager", new { clientId = Model.ClientId, returnUrl = Request.Url.PathAndQuery }))' ">@Model.FirstName</td>
+    <td class="td-data" onclick=" location.href = '@(Url.Action("Edit", "Manager", new { clientId = Model.ClientId, returnUrl = Request.Url.PathAndQuery }))' ">@Model.LastName</td>
+    <td class="td-data" onclick=" location.href = '@(Url.Action("Edit", "Manager", new { clientId = Model.ClientId, returnUrl = Request.Url.PathAndQuery }))' ">@Model.DateBirth.ToShortDateString()</td>
+    <td class="td-data" onclick=" location.href = '@(Url.Action("Edit", "Manager", new { clientId = Model.ClientId, returnUrl = Request.Url.PathAndQuery }))' ">@Model.PhoneNumber</td>
+    <td class="td-data" onclick=" location.href = '@(Url.Action("Edit", "Manager", new { clientId = Model.ClientId, returnUrl = Request.Url.PathAndQuery }))' ">@Model.Status</td>
+    <td class="td-data" onclick=" location.href = '@(Url.Action("Edit", "Manager", new { clientId = Model.ClientId, returnUrl = Request.Url.PathAndQuery }))' ">@Html.DisplayFor(m => m.Deposit, new { @class = "checkbox-list" })</td>
     <td class="td-delete">
         @using (Html.BeginForm("Delete", "Manager", new { returnUrl = Request.Url.PathAndQuery }, FormMethod.Post, new { @class = "form-delete-edit" }))
         {
@@ -18,6 +18,6 @@
     </td>
 </tr>
 <script>
-    
-    $('.td-data').attr('title','Click for edit client');
+
+    $('.td-data').attr('title', 'Click for edit client');
 </script>

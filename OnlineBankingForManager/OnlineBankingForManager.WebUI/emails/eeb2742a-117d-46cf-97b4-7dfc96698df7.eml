@@ -1,0 +1,11 @@
+X-Sender: onlinebanking@example.com
+X-Receiver: luciuses@yandex.ru
+MIME-Version: 1.0
+From: onlinebanking@example.com
+To: luciuses@yandex.ru
+Date: 31 Jul 2014 16:19:27 +0300
+Subject: Online banking message!
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+3, you registered at Online Banking successfully.

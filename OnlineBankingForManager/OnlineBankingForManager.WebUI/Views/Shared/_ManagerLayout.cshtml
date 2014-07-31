@@ -1,11 +1,9 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="link-logout">
-    @{Html.RenderAction("UserInfo", "Account");}
-    @Html.ActionLink("Logout", "LogOff","Account")
+    @{ Html.RenderAction("UserInfo", "Account"); }
+    @Html.ActionLink("Logout", "LogOff", "Account")
 </div>
 @RenderBody()
-  

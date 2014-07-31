@@ -5,7 +5,7 @@
 }
 <link rel="stylesheet/less" type="text/css" href="~/Content/LoginStyle.less">
 
-@using (Html.BeginForm(new{returnUrl = ViewBag.ReturnUrl }))
+@using (Html.BeginForm(new { returnUrl = ViewBag.ReturnUrl }))
 {
     <div class="container-table">
         <table class="table-input-fields">
@@ -16,18 +16,18 @@
             <tr>
     
                 <td class="label-input-field">@Html.LabelFor(m => m.UserName):</td>
-                <td>@Html.TextBoxFor(m => m.UserName,new { @class= "input-field",@title= "Your username."})</td>
+                <td>@Html.TextBoxFor(m => m.UserName, new { @class = "input-field", @title = "Your username." })</td>
                 <td>@Html.ValidationMessageFor(m => m.UserName)</td>
             </tr>
 
             <tr>
                 <td class="label-input-field">@Html.LabelFor(m => m.Password):</td>
-                <td>@Html.PasswordFor(m => m.Password,new { @class= "input-field",@title= "Your password."})</td>
+                <td>@Html.PasswordFor(m => m.Password, new { @class = "input-field", @title = "Your password." })</td>
                 <td>@Html.ValidationMessageFor(m => m.Password)</td>
             </tr>
             <tr>
                 <td></td>
-                <td class="checkbox">@Html.CheckBoxFor(m => m.RememberMe,new {@title= "For remember user."})
+                <td class="checkbox">@Html.CheckBoxFor(m => m.RememberMe, new { @title = "For remember user." })
                     - @Html.LabelFor(m => m.RememberMe)</td>
                 <td>@Html.ValidationMessageFor(m => m.RememberMe)</td>
             </tr>
@@ -44,4 +44,3 @@
         </table>
     </div>
 }
-

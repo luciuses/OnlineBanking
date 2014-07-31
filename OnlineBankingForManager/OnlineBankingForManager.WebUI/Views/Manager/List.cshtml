@@ -1,6 +1,4 @@
-﻿@using System.Collections
-@using System.Web.UI.WebControls
-@using OnlineBankingForManager.Domain.Entities
+﻿@using OnlineBankingForManager.Domain.Entities
 @using OnlineBankingForManager.WebUI.HtmlHelpers
 @model OnlineBankingForManager.WebUI.Models.ClientListViewModel
 @{
@@ -10,61 +8,59 @@
 <script src="~/Scripts/jquery.printElement.js"></script>
 <link rel="stylesheet/less" type="text/css" href="~/Content/ListStyle.less">
 
-    <div class="scroll">
-        <div class="print">
-            <link rel="stylesheet/less" type="text/css" href="~/Content/PrintListStyle.less" media="print">
-            <table class="grid">
-                <tr>
-                    <th id="ContractNumber">Contract Number</th>
-                    <th id="FirstName">First Name</th>
-                    <th id="LastName">Last Name</th>
-                    <th id="DateBirth">Date of Birth</th>
-                    <th id="PhoneNumber">Phone Number</th>
-                    <th id="Status">Status</th>
-                    <th id="Deposit">Deposit</th>
-                </tr>
+<div class="scroll">
+    <div class="print">
+        <link rel="stylesheet/less" type="text/css" href="~/Content/PrintListStyle.less" media="print">
+        <table class="grid">
+            <tr>
+                <th id="ContractNumber">Contract Number</th>
+                <th id="FirstName">First Name</th>
+                <th id="LastName">Last Name</th>
+                <th id="DateBirth">Date of Birth</th>
+                <th id="PhoneNumber">Phone Number</th>
+                <th id="Status">Status</th>
+                <th id="Deposit">Deposit</th>
+            </tr>
 
-                <tr id="filter-row">
+            <tr id="filter-row">
  
-                    @for (int i = 0; i < 7; i++)
-                    {
-                        if (i == 5)
-                        {
-                            <td>
-                                @Html.DropDownListFor(m => m.CurrentStatusClient,new SelectList(Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>()),"All",new{@title="Filter by status"})
-                            </td>
-                        }
-                        else
-                        {
-                            <td></td>
-                        }
-
-                    }
-                </tr>
-                @foreach (var item in Model.Clients)
+                @for (int i = 0; i < 7; i++)
                 {
-                    Html.RenderPartial("ClientSummary", item);
-                }
-                <tr id="row-create" class="row-list" onclick="location.href = '@(Url.Action("Create", "Manager", new { returnUrl = Request.Url.PathAndQuery }))'" title="Click for create new client.">
-                    @for (int i = 0; i < 7; i++)
+                    if (i == 5)
                     {
-                        <td class="cell">...</td>
+                        <td>
+                            @Html.DropDownListFor(m => m.CurrentStatusClient, new SelectList(Enum.GetValues(typeof(StatusClient)).Cast<StatusClient>()), "All", new { @title = "Filter by status" })
+                        </td>
                     }
-                </tr>
-            </table>
-        </div>
-    
+                    else
+                    {
+                        <td></td>
+                    }
+                }
+            </tr>
+            @foreach (Client item in Model.Clients)
+            {
+                Html.RenderPartial("ClientSummary", item);
+            }
+            <tr id="row-create" class="row-list" onclick=" location.href = '@(Url.Action("Create", "Manager", new { returnUrl = Request.Url.PathAndQuery }))' " title="Click for create new client.">
+                @for (int i = 0; i < 7; i++)
+                {
+                    <td class="cell">...</td>
+                }
+            </tr>
+        </table>
     </div>
+    
+</div>
 <div class="pager">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
-        new { page = x, pageSize=Model.PagingInfo.ItemsPerPage, status = Model.CurrentStatusClient,order=Model.CurrentOrderClients }))
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, pageSize = Model.PagingInfo.ItemsPerPage, status = Model.CurrentStatusClient, order = Model.CurrentOrderClients }))
     <br>
         
     <div id="summary-info">
         <button id="button_print" title="Print table"></button>
         Clients Total : @Model.ClientsTotal, VIP : @Model.ClientsVipStatus, Classic : @Model.ClientsClassicStatus, Deposit : @Model.ClientsUseDeposit
     </div>
-    Clients on the page:  @Html.TextBoxFor(m=>m.PagingInfo.ItemsPerPage,new {@id="input_page_size",@type="number"})
+    Clients on the page:  @Html.TextBoxFor(m => m.PagingInfo.ItemsPerPage, new { @id = "input_page_size", @type = "number" })
         
 </div>
 
@@ -73,9 +69,9 @@
         var c = confirm("Are you sure delete client ?");
         return c;
     });
-    $('th').click(function() {
+    $('th').click(function () {
         var idAttr = $(this).attr('id');
-        var currOrder="@Model.CurrentOrderClients";
+        var currOrder = "@Model.CurrentOrderClients";
         var order = currOrder.match("^" + idAttr) ? (currOrder.match("DESC$") ? idAttr : idAttr + " DESC") : idAttr;
         window.location.href =
             '/Manager/List/' + "?" +
@@ -83,35 +79,35 @@
                 page: '@Model.PagingInfo.CurrentPage',
                 pageSize: '@Model.PagingInfo.ItemsPerPage',
                 status: '@Model.CurrentStatusClient',
-                order: order
+            order: order
         });
     });
-    $('th').each(function() {
+    $('th').each(function () {
         var idAttr = $(this).attr('id');
-        var currOrder="@Model.CurrentOrderClients";
+        var currOrder = "@Model.CurrentOrderClients";
         $(this).attr('class', currOrder.match("^" + idAttr) ? (currOrder.match("DESC$") ? 'orderDesc' : 'order') : 'no_order');
-        $(this).attr('title', 'Click for sort by '+$(this).text());
+        $(this).attr('title', 'Click for sort by ' + $(this).text());
     });
-    $('select').change(function() {
+    $('select').change(function () {
         window.location.href = '/Manager/List/' + "?" +
             $.param({
                 page: '@Model.PagingInfo.CurrentPage',
                 pageSize: '@Model.PagingInfo.ItemsPerPage',
                 status: $(this).val(),
                 order: '@Model.CurrentOrderClients'
-            });
+        });
     });
     $('#input_page_size').change(function () {
         window.location.href = '/Manager/List/' + "?" +
             $.param({
                 page: '@Model.PagingInfo.CurrentPage',
-                pageSize:$(this).val(),
+                pageSize: $(this).val(),
                 status: '@Model.CurrentStatusClient',
                 order: '@Model.CurrentOrderClients'
-            });
+        });
     });
-    $(function() {
-        $('#button_print').click(function() {
+    $(function () {
+        $('#button_print').click(function () {
             $('.print').printElement({
                 pageTitle: 'Your Clients List - page:' + '@Model.PagingInfo.CurrentPage from ' + '@Model.PagingInfo.TotalPages' +
                 ('@Model.CurrentStatusClient' != '' ? ', filter by : @Model.CurrentStatusClient' : '') +
@@ -120,5 +116,5 @@
             });
         });
     });
-    
+
 </script>
