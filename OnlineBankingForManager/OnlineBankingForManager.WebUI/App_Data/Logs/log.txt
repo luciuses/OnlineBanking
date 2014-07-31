@@ -582,3 +582,26 @@ Login failed for user 'Luciuses-PC\Luciuses'.
    at OnlineBankingForManager.WebUI.Infrastructure.Concrete.FormsRegisterProvider.Register(String username, String password, String userEmail, String userAddress) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Infrastructure\Concrete\FormsRegisterProvider.cs:line 19
    at OnlineBankingForManager.WebUI.Controllers.AccountController.Register(RegisterViewModel model) in d:\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Controllers\AccountController.cs:line 153
 ClientConnectionId:b5ef072e-1a2c-4e0c-8f84-014c27281ec1
+2014-07-30 12:27:30,950 [5] Logger ERROR Mail sender service error when registering:System.Net.Mail.SmtpException: Failure sending mail. ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\onlineBankingRep\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\emails\1ebadbfb-9ccc-4efd-aac9-53e04e8bd760.eml'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at System.Net.Mail.SmtpClient.GetFileMailWriter(String pickupDirectory)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   --- End of inner exception stack trace ---
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at OnlineBankingForManager.WebUI.Infrastructure.Concrete.FormsSendMailProvider.Send(String mailToAddress, String bodyText) in d:\onlineBankingRep\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Infrastructure\Concrete\FormsSendMailProvider.cs:line 50
+   at OnlineBankingForManager.WebUI.Controllers.AccountController.Register(RegisterViewModel model) in d:\onlineBankingRep\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Controllers\AccountController.cs:line 170 
+ Send() with params: Email test@test.test, Text Account created successfully
+System.Net.Mail.SmtpException: Failure sending mail. ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\onlineBankingRep\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\emails\1ebadbfb-9ccc-4efd-aac9-53e04e8bd760.eml'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at System.Net.Mail.SmtpClient.GetFileMailWriter(String pickupDirectory)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   --- End of inner exception stack trace ---
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at OnlineBankingForManager.WebUI.Infrastructure.Concrete.FormsSendMailProvider.Send(String mailToAddress, String bodyText) in d:\onlineBankingRep\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Infrastructure\Concrete\FormsSendMailProvider.cs:line 50
+   at OnlineBankingForManager.WebUI.Controllers.AccountController.Register(RegisterViewModel model) in d:\onlineBankingRep\OnlineBanking\OnlineBankingForManager\OnlineBankingForManager.WebUI\Controllers\AccountController.cs:line 170
