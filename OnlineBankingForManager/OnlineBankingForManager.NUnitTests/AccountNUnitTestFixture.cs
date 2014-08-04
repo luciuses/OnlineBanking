@@ -72,10 +72,8 @@ namespace OnlineBankingForManager.NUnitTests
             // Assert
             mockA.Verify(m => m.Logout());
             Assert.IsInstanceOf(typeof(RedirectToRouteResult), result);
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(0), "action");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(0), "List");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(1), "controller");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(1), "Manager");
+            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues["action"], "List");
+            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues["controller"], "Manager");
             Assert.IsTrue(controller.ModelState.IsValid);
         }
 
@@ -113,10 +111,8 @@ namespace OnlineBankingForManager.NUnitTests
             mockC.Verify(m => m.Authenticate(registerViewModel.UserName, registerViewModel.Password, false));
             Assert.IsTrue(controller.ModelState.IsValid);
             Assert.IsInstanceOf(typeof(RedirectToRouteResult), result);
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(0), "action");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(0), "List");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(1), "controller");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(1), "Manager");
+            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues["action"], "List");
+            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues["controller"], "Manager");
         }
 
         /// <summary>
@@ -181,10 +177,8 @@ namespace OnlineBankingForManager.NUnitTests
             mockC.Verify(m => m.Authenticate(registerViewModel.UserName, registerViewModel.Password, false));
             Assert.IsFalse(controller.ModelState.IsValid);
             Assert.IsInstanceOf(typeof(RedirectToRouteResult), result);
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(0), "action");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(0), "List");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(1), "controller");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(1), "Manager");
+            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues["action"], "List");
+            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues["controller"], "Manager");
         }
 
         /// <summary>
@@ -224,10 +218,8 @@ namespace OnlineBankingForManager.NUnitTests
             mockC.Verify(m => m.Authenticate(registerViewModel.UserName, registerViewModel.Password, false));
             Assert.IsFalse(controller.ModelState.IsValid);
             Assert.IsInstanceOf(typeof(RedirectToRouteResult), result);
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(0), "action");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(0), "List");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(1), "controller");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(1), "Manager");
+            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues["action"], "List");
+            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues["controller"], "Manager");
         }
 
         /// <summary>
@@ -266,10 +258,8 @@ namespace OnlineBankingForManager.NUnitTests
             mockC.Verify(m => m.Authenticate(registerViewModel.UserName, registerViewModel.Password, false));
             Assert.IsFalse(controller.ModelState.IsValid);
             Assert.IsInstanceOf(typeof(RedirectToRouteResult), result);
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(0), "action");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(0), "List");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(1), "controller");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(1), "Manager");
+            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues["action"], "List");
+            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues["controller"], "Manager");
         }
 
         /// <summary>
@@ -514,10 +504,8 @@ namespace OnlineBankingForManager.NUnitTests
             mockA.Verify(m => m.Logout());
             Assert.IsInstanceOf(typeof(RedirectToRouteResult), result);
             Assert.IsFalse(controller.ModelState.IsValid);
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(0), "action");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(0), "List");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(1), "controller");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(1), "Manager");
+            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues["action"], "List");
+            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues["controller"], "Manager");
         }
 
         /// <summary>
@@ -541,10 +529,8 @@ namespace OnlineBankingForManager.NUnitTests
             mockA.Verify(m => m.Logout());
             Assert.IsInstanceOf(typeof(RedirectToRouteResult), result);
             Assert.IsFalse(controller.ModelState.IsValid);
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(0), "action");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(0), "List");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Keys.ElementAt(1), "controller");
-            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues.Values.ElementAt(1), "Manager");
+            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues["action"], "List");
+            Assert.AreEqual(((RedirectToRouteResult)result).RouteValues["controller"], "Manager");
         }
 
         /// <summary>
