@@ -42,7 +42,7 @@
             {
                 Html.RenderPartial("ClientSummary", item);
             }
-            <tr id="row-create" class="row-list" onclick=" location.href = '@(Url.Action("Create", "Manager", new { returnUrl = Request.Url.PathAndQuery }))' " title="Click for create new client.">
+            <tr id="row-create" class="row-list" onclick=" location.href = '@(Url.Action(MVC.Manager.Create(Request.Url.PathAndQuery)))' " title="Click for create new client.">
                 @for (int i = 0; i < 7; i++)
                 {
                     <td class="cell">...</td>
@@ -53,7 +53,7 @@
     
 </div>
 <div class="pager">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, pageSize = Model.PagingInfo.ItemsPerPage, status = Model.CurrentStatusClient, order = Model.CurrentOrderClients }))
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Manager.List(x,Model.PagingInfo.ItemsPerPage,Model.CurrentStatusClient,Model.CurrentOrderClients)))
     <br>
         
     <div id="summary-info">
@@ -74,13 +74,13 @@
         var currOrder = "@Model.CurrentOrderClients";
         var order = currOrder.match("^" + idAttr) ? (currOrder.match("DESC$") ? idAttr : idAttr + " DESC") : idAttr;
         window.location.href =
-            '/Manager/List/' + "?" +
+            '/@MVC.Manager.Name/@MVC.Manager.ActionNames.List/' + "?" +
             $.param({
                 page: '@Model.PagingInfo.CurrentPage',
                 pageSize: '@Model.PagingInfo.ItemsPerPage',
                 status: '@Model.CurrentStatusClient',
-            order: order
-        });
+                order: order
+            });
     });
     $('th').each(function () {
         var idAttr = $(this).attr('id');
@@ -89,22 +89,22 @@
         $(this).attr('title', 'Click for sort by ' + $(this).text());
     });
     $('select').change(function () {
-        window.location.href = '/Manager/List/' + "?" +
+        window.location.href = '/@MVC.Manager.Name/@MVC.Manager.ActionNames.List/' + "?" +
             $.param({
                 page: '@Model.PagingInfo.CurrentPage',
                 pageSize: '@Model.PagingInfo.ItemsPerPage',
                 status: $(this).val(),
                 order: '@Model.CurrentOrderClients'
-        });
+            });
     });
     $('#input_page_size').change(function () {
-        window.location.href = '/Manager/List/' + "?" +
+        window.location.href = '/@MVC.Manager.Name/@MVC.Manager.ActionNames.List/' + "?" +
             $.param({
                 page: '@Model.PagingInfo.CurrentPage',
                 pageSize: $(this).val(),
                 status: '@Model.CurrentStatusClient',
                 order: '@Model.CurrentOrderClients'
-        });
+            });
     });
     $(function () {
         $('#button_print').click(function () {

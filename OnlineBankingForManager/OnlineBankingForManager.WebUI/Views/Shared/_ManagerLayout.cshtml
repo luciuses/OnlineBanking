@@ -3,7 +3,7 @@
 }
 
 <div class="link-logout">
-    @{ Html.RenderAction("UserInfo", "Account"); }
-    @Html.ActionLink("Logout", "LogOff", "Account")
+    @{ Html.RenderAction(MVC.Account.UserInfo()); }
+    @Html.ActionLink("Logout", MVC.Account.LogOff())
 </div>
 @RenderBody()

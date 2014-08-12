@@ -24,7 +24,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
     /// The manager controller.
     /// </summary>
     [Authorize(Roles = "ActiveUser")]
-    public class ManagerController : Controller
+    public partial class ManagerController : Controller
     {
         /// <summary>
         /// The repository.
@@ -61,7 +61,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
         /// The <see cref="ViewResult"/>.
         /// </returns>
         [ImportModelStateFromTempData]
-        public ViewResult List(int? page, int? pageSize, StatusClient? status, string order)
+        public virtual ViewResult List(int? page, int? pageSize, StatusClient? status, string order)
         {
             PagingInfo pi = null;
             try
@@ -121,7 +121,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
         /// <returns>
         /// The <see cref="ViewResult"/>.
         /// </returns>
-        public ViewResult Edit(int clientId, string returnUrl)
+        public virtual ViewResult Edit(int clientId, string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             Client client;
@@ -158,7 +158,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
         /// The <see cref="ActionResult"/>.
         /// </returns>
         [HttpPost]
-        public ActionResult Edit(Client client, string returnUrl)
+        public virtual ActionResult Edit(Client client, string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             if (ModelState.IsValid)
@@ -199,7 +199,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
         /// <returns>
         /// The <see cref="ViewResult"/>.
         /// </returns>
-        public ViewResult Create(string returnUrl)
+        public virtual ViewResult Create(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View("Edit", new Client { DateBirth = DateTime.Today });
@@ -218,7 +218,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
         /// The <see cref="ActionResult"/>.
         /// </returns>
         [ExportModelStateToTempData]
-        public ActionResult Delete(int clientId, string returnUrl)
+        public virtual ActionResult Delete(int clientId, string returnUrl)
         {
             try
             {
@@ -242,7 +242,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
                 Logger.Log.Error(string.Format("{0} when deleting Client ({1}) :{2} ", ex.GetType(), clientId, ex), ex);
             }
 
-            return Redirect(returnUrl ?? Url.Action("List", "Manager"));
+            return Redirect(returnUrl ?? Url.Action(MVC.Manager.List()));
         }
     }
 }

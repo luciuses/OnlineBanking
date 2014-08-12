@@ -8,7 +8,7 @@
 <link rel="stylesheet/less" type="text/css" href="~/Content/EditStyle.less">
 
 <div class="container-table">
-    @using (Html.BeginForm("Edit", "Manager", new { ViewBag.ReturnUrl }))
+    @using (Html.BeginForm(MVC.Manager.ActionNames.Edit, MVC.Manager.Name, new { ViewBag.ReturnUrl }))
     {
         @Html.HiddenFor(m => m.ClientId)
 

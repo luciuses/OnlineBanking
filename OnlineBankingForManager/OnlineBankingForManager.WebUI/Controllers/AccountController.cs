@@ -24,7 +24,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
     /// The account controller.
     /// </summary>
     [Authorize(Roles = "ActiveUser")]
-    public class AccountController : Controller
+    public partial class AccountController : Controller
     {
         /// <summary>
         /// The auth provider.
@@ -72,7 +72,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
         /// The <see cref="ActionResult"/>.
         /// </returns>
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public virtual ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -94,7 +94,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
         /// </returns>
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Login(LoginViewModel model, string returnUrl)
+        public virtual ActionResult Login(LoginViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +104,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
                     {
                         if (_authProvider.IsActiveUser(model.UserName))
                         {
-                            return Redirect(returnUrl ?? Url.Action("List", "Manager"));
+                            return Redirect(returnUrl ?? Url.Action(MVC.Manager.List()));
                         }
 
                         ModelState.AddModelError(string.Empty, "Login locked. Email for unlock account sended.");
@@ -194,7 +194,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
         /// The <see cref="ActionResult"/>.
         /// </returns>
         [ExportModelStateToTempData]
-        public ActionResult LogOff()
+        public virtual ActionResult LogOff()
         {
             try
             {
@@ -211,7 +211,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
                 Logger.Log.Error(string.Format("Authenticate service error:{0} \r\n Logout()", ex), ex);
             }
 
-            return RedirectToAction("List", "Manager");
+            return RedirectToAction(MVC.Manager.List());
         }
 
         // GET: /Account/Register
@@ -223,7 +223,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
         /// The <see cref="ActionResult"/>.
         /// </returns>
         [AllowAnonymous]
-        public ActionResult Register()
+        public virtual ActionResult Register()
         {
             return View();
         }
@@ -242,7 +242,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ExportModelStateToTempData]
-        public ActionResult Register(RegisterViewModel model)
+        public virtual ActionResult Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -330,7 +330,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
                             ex);
                     }
 
-                    return RedirectToAction("List", "Manager");
+                    return RedirectToAction(MVC.Manager.List());
                 }
 
                 ModelState.AddModelError(string.Empty, createStatus.ErrorCodeToString());
@@ -351,7 +351,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
         /// The <see cref="ActionResult"/>.
         /// </returns>
         [AllowAnonymous]
-        public ActionResult Unlock(int userId)
+        public virtual ActionResult Unlock(int userId)
         {
             string username = "no user";
             try
@@ -385,7 +385,7 @@ namespace OnlineBankingForManager.WebUI.Controllers
         /// <returns>
         /// The <see cref="PartialViewResult"/>.
         /// </returns>
-        public PartialViewResult UserInfo()
+        public virtual PartialViewResult UserInfo()
         {
             var model = new UserInfo();
             try

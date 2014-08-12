@@ -4,7 +4,7 @@
     ViewBag.Title = "Register";
 }
 <link rel="stylesheet/less" type="text/css" href="~/Content/RegisterStyle.less">
-<div class="link-login">@Html.ActionLink("Login", "Login")</div>
+<div class="link-login">@Html.ActionLink("Login", MVC.Account.Login())</div>
 @using (Html.BeginForm())
 {
     <div class="container-table">
