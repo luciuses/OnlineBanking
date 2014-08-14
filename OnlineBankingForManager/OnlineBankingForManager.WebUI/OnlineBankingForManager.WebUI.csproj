@@ -215,6 +215,10 @@
     <Compile Include="App_Start\MemberShipConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Infrastructure\Abstract\IAdminProvider.cs" />
+    <Compile Include="Areas\Admin\Models\UsersViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -257,6 +261,8 @@
     <Content Include="Content\Image\Delete_Icon_16.png" />
     <Content Include="Content\Image\logo.png" />
     <Content Include="Content\jquery.qtip.min.css" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Admin\Users.cshtml" />
     <None Include="Content\PrintListStyle.less" />
     <Content Include="Content\PrintListStyle.css">
       <DependentUpon>PrintListStyle.less</DependentUpon>
@@ -381,7 +387,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
